@@ -65,6 +65,7 @@
                 <a href="#guia-pratico" class="nav-link text-gray-600 hover:text-green-600 font-medium pb-1" data-i18n="nav_guide">Guia Prático</a>
                 <a href="#compostagem" class="nav-link text-gray-600 hover:text-green-600 font-medium pb-1" data-i18n="nav_compost">Compostagem</a>
                 <a href="#plano-estrategico" class="nav-link text-gray-600 hover:text-green-600 font-medium pb-1" data-i18n="nav_plan">Plano Estratégico</a>
+                <a href="#materiais" class="nav-link text-gray-600 hover:text-green-600 font-medium pb-1" data-i18n="nav_materials">Materiais</a>
                 <a href="#cronograma" class="nav-link text-gray-600 hover:text-green-600 font-medium pb-1" data-i18n="nav_schedule">Cronograma</a>
                 <a href="#creditos" class="nav-link text-gray-600 hover:text-green-600 font-medium pb-1" data-i18n="nav_credits">Créditos</a>
                 <button class="theme-toggle hidden md:inline-flex items-center gap-2 border border-gray-200 rounded-lg px-3 py-1.5 text-sm text-gray-700 hover:bg-gray-50 dark:border-gray-600 dark:text-gray-200 dark:hover:bg-gray-700 transition" aria-label="Alternar tema">
@@ -100,6 +101,7 @@
             <a href="#guia-pratico" class="block nav-link text-gray-600 hover:text-green-600 font-medium" data-i18n="nav_guide">Guia Prático</a>
             <a href="#compostagem" class="block nav-link text-gray-600 hover:text-green-600 font-medium" data-i18n="nav_compost">Compostagem</a>
             <a href="#plano-estrategico" class="block nav-link text-gray-600 hover:text-green-600 font-medium" data-i18n="nav_plan">Plano Estratégico</a>
+            <a href="#materiais" class="block nav-link text-gray-600 hover:text-green-600 font-medium" data-i18n="nav_materials">Materiais</a>
             <a href="#cronograma" class="block nav-link text-gray-600 hover:text-green-600 font-medium" data-i18n="nav_schedule">Cronograma</a>
             <a href="#creditos" class="block nav-link text-gray-600 hover:text-green-600 font-medium" data-i18n="nav_credits">Créditos</a>
         </div>
@@ -491,6 +493,60 @@
             </div>
         </section>
 
+        <!-- Página: Materiais -->
+        <section id="materiais" class="page">
+            <div class="bg-white p-6 md:p-8 rounded-lg shadow-xl">
+                <h2 class="text-3xl font-bold text-green-700 mb-6 border-b-2 border-green-200 pb-2" data-i18n="mat_title">Materiais Necessários</h2>
+                <p class="text-gray-600 mb-6" data-i18n="mat_intro">Lista completa de materiais, ferramentas e insumos para a implantação e manutenção da horta comunitária. Use os filtros abaixo para facilitar a busca.</p>
+
+                <div class="mb-6 flex flex-col md:flex-row gap-4 items-start md:items-center">
+                    <div class="flex-1">
+                        <label for="category-filter" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2" data-i18n="mat_filter_label">Filtrar por Categoria:</label>
+                        <select id="category-filter" class="w-full md:w-64 border border-gray-300 dark:border-gray-600 rounded-lg px-4 py-2 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200">
+                            <option value="all" data-i18n="mat_filter_all">Todas</option>
+                        </select>
+                    </div>
+                    <div class="flex gap-3">
+                        <button id="download-csv-btn" class="inline-flex items-center gap-2 bg-green-600 text-white font-medium py-2 px-4 rounded-lg hover:bg-green-700 transition">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                            </svg>
+                            <span data-i18n="mat_download">Baixar CSV</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div id="materials-loading" class="text-center py-8">
+                    <p class="text-gray-500" data-i18n="mat_loading">Carregando materiais...</p>
+                </div>
+
+                <div id="materials-error" class="hidden bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg dark:bg-red-900 dark:border-red-700 dark:text-red-200">
+                    <p data-i18n="mat_error">Erro ao carregar a lista de materiais. Verifique se o arquivo MATERIAIS.csv está disponível.</p>
+                </div>
+
+                <div id="materials-table-container" class="hidden overflow-x-auto rounded-lg border border-gray-200 dark:border-gray-700 shadow-sm">
+                    <table class="w-full text-sm text-left text-gray-600 dark:text-gray-300">
+                        <thead class="bg-gray-100 text-gray-700 dark:bg-gray-700 dark:text-gray-100 uppercase tracking-wider">
+                            <tr>
+                                <th class="px-6 py-3" data-i18n="mat_th_category">Categoria</th>
+                                <th class="px-6 py-3" data-i18n="mat_th_item">Item</th>
+                                <th class="px-6 py-3" data-i18n="mat_th_spec">Especificação</th>
+                                <th class="px-6 py-3" data-i18n="mat_th_qty">Qtde</th>
+                                <th class="px-6 py-3" data-i18n="mat_th_notes">Observações</th>
+                            </tr>
+                        </thead>
+                        <tbody id="materials-tbody" class="bg-white dark:bg-gray-800">
+                            <!-- Rows will be populated by JS -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <div id="materials-empty" class="hidden text-center py-8 text-gray-500">
+                    <p data-i18n="mat_empty">Nenhum material encontrado para esta categoria.</p>
+                </div>
+            </div>
+        </section>
+
         <!-- Página: Cronograma -->
         <section id="cronograma" class="page">
             <div class="bg-white p-6 md:p-8 rounded-lg shadow-xl">
@@ -700,6 +756,21 @@
                     nav_compost: 'Compostagem',
                     nav_plan: 'Plano Estratégico',
                     nav_schedule: 'Cronograma',
+                    nav_materials: 'Materiais',
+                    nav_credits: 'Créditos',
+                    mat_title: 'Materiais Necessários',
+                    mat_intro: 'Lista completa de materiais, ferramentas e insumos para a implantação e manutenção da horta comunitária. Use os filtros abaixo para facilitar a busca.',
+                    mat_filter_label: 'Filtrar por Categoria:',
+                    mat_filter_all: 'Todas',
+                    mat_download: 'Baixar CSV',
+                    mat_loading: 'Carregando materiais...',
+                    mat_error: 'Erro ao carregar a lista de materiais. Verifique se o arquivo MATERIAIS.csv está disponível.',
+                    mat_th_category: 'Categoria',
+                    mat_th_item: 'Item',
+                    mat_th_spec: 'Especificação',
+                    mat_th_qty: 'Qtde',
+                    mat_th_notes: 'Observações',
+                    mat_empty: 'Nenhum material encontrado para esta categoria.',
                     cron_title: 'Cronograma (12 semanas)',
                     cron_intro: 'Resumo das fases, atividades-chave e marcos para a implantação inicial da horta comunitária na CEU/UFSC.',
                     cron_th_weeks: 'Semanas',
@@ -910,8 +981,22 @@
                     nav_compost: 'Compostaje',
                     nav_plan: 'Plan Estratégico',
                     nav_schedule: 'Cronograma',
+                    nav_materials: 'Materiales',
                     nav_credits: 'Créditos',
-                    home_title: 'Guía Práctica de la Huerta Comunitaria',
+                    mat_title: 'Materiales Necesarios',
+                    mat_intro: 'Lista completa de materiales, herramientas e insumos para la implantación y mantenimiento de la huerta comunitaria. Use los filtros abajo para facilitar la búsqueda.',
+                    mat_filter_label: 'Filtrar por Categoría:',
+                    mat_filter_all: 'Todas',
+                    mat_download: 'Descargar CSV',
+                    mat_loading: 'Cargando materiales...',
+                    mat_error: 'Error al cargar la lista de materiales. Verifique si el archivo MATERIAIS.csv está disponible.',
+                    mat_th_category: 'Categoría',
+                    mat_th_item: 'Ítem',
+                    mat_th_spec: 'Especificación',
+                    mat_th_qty: 'Cant.',
+                    mat_th_notes: 'Observaciones',
+                    mat_empty: 'No se encontraron materiales para esta categoría.',
+                    cron_title: 'Cronograma (12 semanas)',
                     home_tagline: 'Cultivando alimentos, sembrando comunidad.',
                     home_welcome: '¡Bienvenido(a)!',
                     home_intro1: 'Este es tu guía completo para participar y aprovechar al máximo la Huerta Comunitaria Agroecológica en la Residencia Estudiantil de la UFSC. Nuestra huerta es un espacio de aprendizaje, convivencia y sostenibilidad.',
@@ -1202,6 +1287,147 @@
             });
 
             menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+            
+            // Materials section - CSV loader and renderer
+            let materialsData = [];
+            let allCategories = new Set();
+            
+            async function loadMaterials() {
+                const loadingEl = document.getElementById('materials-loading');
+                const errorEl = document.getElementById('materials-error');
+                const tableContainer = document.getElementById('materials-table-container');
+                
+                try {
+                    const response = await fetch('MATERIAIS.csv');
+                    if (!response.ok) throw new Error('CSV not found');
+                    
+                    const csvText = await response.text();
+                    materialsData = parseCSV(csvText);
+                    
+                    // Extract unique categories
+                    materialsData.forEach(row => {
+                        if (row.Categoria) allCategories.add(row.Categoria);
+                    });
+                    
+                    // Populate category filter
+                    const categoryFilter = document.getElementById('category-filter');
+                    allCategories.forEach(cat => {
+                        const option = document.createElement('option');
+                        option.value = cat;
+                        option.textContent = cat;
+                        categoryFilter.appendChild(option);
+                    });
+                    
+                    loadingEl.classList.add('hidden');
+                    tableContainer.classList.remove('hidden');
+                    renderMaterialsTable(materialsData);
+                    
+                } catch (error) {
+                    console.error('Error loading materials:', error);
+                    loadingEl.classList.add('hidden');
+                    errorEl.classList.remove('hidden');
+                }
+            }
+            
+            function parseCSV(csvText) {
+                const lines = csvText.trim().split('\n');
+                const headers = lines[0].split(',').map(h => h.trim());
+                const data = [];
+                
+                for (let i = 1; i < lines.length; i++) {
+                    const values = lines[i].split(',').map(v => v.trim());
+                    if (values.length === headers.length) {
+                        const row = {};
+                        headers.forEach((header, index) => {
+                            row[header] = values[index];
+                        });
+                        data.push(row);
+                    }
+                }
+                return data;
+            }
+            
+            function renderMaterialsTable(data) {
+                const tbody = document.getElementById('materials-tbody');
+                const emptyEl = document.getElementById('materials-empty');
+                const tableContainer = document.getElementById('materials-table-container');
+                
+                tbody.innerHTML = '';
+                
+                if (data.length === 0) {
+                    tableContainer.classList.add('hidden');
+                    emptyEl.classList.remove('hidden');
+                    return;
+                }
+                
+                tableContainer.classList.remove('hidden');
+                emptyEl.classList.add('hidden');
+                
+                data.forEach(row => {
+                    const tr = document.createElement('tr');
+                    tr.className = 'border-b border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700';
+                    tr.innerHTML = `
+                        <td class="px-6 py-4 font-medium text-gray-900 dark:text-gray-100">${row.Categoria || ''}</td>
+                        <td class="px-6 py-4">${row.Item || ''}</td>
+                        <td class="px-6 py-4">${row['Especificação'] || row.Especificacao || ''}</td>
+                        <td class="px-6 py-4">${row.Qtde || row.Quantidade || ''}</td>
+                        <td class="px-6 py-4">${row['Observações'] || row.Observacoes || ''}</td>
+                    `;
+                    tbody.appendChild(tr);
+                });
+            }
+            
+            // Category filter
+            const categoryFilter = document.getElementById('category-filter');
+            if (categoryFilter) {
+                categoryFilter.addEventListener('change', (e) => {
+                    const selectedCategory = e.target.value;
+                    let filteredData = materialsData;
+                    
+                    if (selectedCategory !== 'all') {
+                        filteredData = materialsData.filter(row => row.Categoria === selectedCategory);
+                    }
+                    
+                    renderMaterialsTable(filteredData);
+                    applyI18n(currentLanguage);
+                });
+            }
+            
+            // Download CSV button
+            const downloadBtn = document.getElementById('download-csv-btn');
+            if (downloadBtn) {
+                downloadBtn.addEventListener('click', () => {
+                    const selectedCategory = categoryFilter.value;
+                    let dataToDownload = materialsData;
+                    
+                    if (selectedCategory !== 'all') {
+                        dataToDownload = materialsData.filter(row => row.Categoria === selectedCategory);
+                    }
+                    
+                    // Convert to CSV
+                    if (dataToDownload.length === 0) return;
+                    
+                    const headers = Object.keys(dataToDownload[0]);
+                    const csvContent = [
+                        headers.join(','),
+                        ...dataToDownload.map(row => headers.map(h => row[h] || '').join(','))
+                    ].join('\n');
+                    
+                    // Download
+                    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+                    const link = document.createElement('a');
+                    const url = URL.createObjectURL(blob);
+                    link.setAttribute('href', url);
+                    link.setAttribute('download', `materiais_horta_${selectedCategory !== 'all' ? selectedCategory : 'completo'}.csv`);
+                    link.style.visibility = 'hidden';
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                });
+            }
+            
+            // Load materials when page loads
+            loadMaterials();
             
             showPage('inicio');
         });
