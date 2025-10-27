@@ -125,14 +125,14 @@
                         </div>
                     </div>
 
-                    <div class="bg-green-50 border-2 border-green-200 p-6 rounded-lg">
-                        <h4 class="text-xl font-bold text-green-800 mb-4" data-i18n="home_features_title">O que você encontrará aqui?</h4>
-                        <ul class="space-y-3 list-disc list-inside text-gray-700">
-                           <li><span class="font-semibold">O Projeto:</span> Entenda nossos objetivos e a importância da horta para a comunidade.</li>
-                           <li><span class="font-semibold">Como Participar:</span> Um passo a passo simples para você se juntar a nós nos mutirões e atividades.</li>
-                           <li><span class="font-semibold">Guia de Cultivo:</span> Dicas práticas sobre o que plantar em cada estação e como cuidar das hortaliças.</li>
-                           <li><span class="font-semibold">Compostagem:</span> Aprenda a transformar resíduos orgânicos em adubo rico para nossas plantas.</li>
-                           <li><span class="font-semibold">Plano Estratégico:</span> Acesse a documentação completa do projeto de extensão.</li>
+                    <div class="bg-green-50 border-2 border-green-200 p-6 rounded-lg dark:bg-green-900 dark:border-green-700">
+                        <h4 class="text-xl font-bold text-green-800 mb-4 dark:text-green-200" data-i18n="home_features_title">O que você encontrará aqui?</h4>
+                        <ul class="space-y-3 list-disc list-inside text-gray-700 dark:text-gray-200">
+                           <li data-i18n="home_feat_project" data-i18n-html="true"><span class="font-semibold">O Projeto:</span> Entenda nossos objetivos e a importância da horta para a comunidade.</li>
+                           <li data-i18n="home_feat_participate" data-i18n-html="true"><span class="font-semibold">Como Participar:</span> Um passo a passo simples para você se juntar a nós nos mutirões e atividades.</li>
+                           <li data-i18n="home_feat_guide" data-i18n-html="true"><span class="font-semibold">Guia de Cultivo:</span> Dicas práticas sobre o que plantar em cada estação e como cuidar das hortaliças.</li>
+                           <li data-i18n="home_feat_compost" data-i18n-html="true"><span class="font-semibold">Compostagem:</span> Aprenda a transformar resíduos orgânicos em adubo rico para nossas plantas.</li>
+                           <li data-i18n="home_feat_plan" data-i18n-html="true"><span class="font-semibold">Plano Estratégico:</span> Acesse a documentação completa do projeto de extensão.</li>
                         </ul>
                     </div>
                 </div>
@@ -600,6 +600,11 @@
                     home_intro2: 'Explore as seções para descobrir como colocar a mão na terra, aprender sobre cultivo e compostagem, e fazer parte desta transformação coletiva.',
                     home_cta: 'Conheça o Projeto',
                     home_features_title: 'O que você encontrará aqui?',
+                    home_feat_project: '<span class="font-semibold">O Projeto:</span> Entenda nossos objetivos e a importância da horta para a comunidade.',
+                    home_feat_participate: '<span class="font-semibold">Como Participar:</span> Um passo a passo simples para você se juntar a nós nos mutirões e atividades.',
+                    home_feat_guide: '<span class="font-semibold">Guia de Cultivo:</span> Dicas práticas sobre o que plantar em cada estação e como cuidar das hortaliças.',
+                    home_feat_compost: '<span class="font-semibold">Compostagem:</span> Aprenda a transformar resíduos orgânicos em adubo rico para nossas plantas.',
+                    home_feat_plan: '<span class="font-semibold">Plano Estratégico:</span> Acesse a documentação completa do projeto de extensão.',
                     proj_title: 'O Projeto: Biologia e Sociedade',
                     join_title: 'Como Fazer Parte?',
                     guide_title: 'Guia Prático de Cultivo',
@@ -623,6 +628,11 @@
                     home_intro2: 'Explora las secciones para descubrir cómo poner las manos en la tierra, aprender sobre cultivo y compostaje, y formar parte de esta transformación colectiva.',
                     home_cta: 'Conoce el Proyecto',
                     home_features_title: '¿Qué encontrarás aquí?',
+                    home_feat_project: '<span class="font-semibold">El Proyecto:</span> Entiende nuestros objetivos y la importancia de la huerta para la comunidad.',
+                    home_feat_participate: '<span class="font-semibold">Cómo Participar:</span> Una guía simple para sumarte a los mingas y actividades.',
+                    home_feat_guide: '<span class="font-semibold">Guía de Cultivo:</span> Consejos prácticos sobre qué plantar en cada estación y cómo cuidar de las hortalizas.',
+                    home_feat_compost: '<span class="font-semibold">Compostaje:</span> Aprende a transformar residuos orgánicos en abono rico para nuestras plantas.',
+                    home_feat_plan: '<span class="font-semibold">Plan Estratégico:</span> Accede a la documentación completa del proyecto de extensión.',
                     proj_title: 'El Proyecto: Biología y Sociedad',
                     join_title: '¿Cómo participar?',
                     guide_title: 'Guía práctica de cultivo',
@@ -637,7 +647,11 @@
                     const key = el.getAttribute('data-i18n');
                     const value = translations[lang] && translations[lang][key];
                     if (value) {
-                        el.textContent = value;
+                        if (el.hasAttribute('data-i18n-html')) {
+                            el.innerHTML = value;
+                        } else {
+                            el.textContent = value;
+                        }
                     }
                 });
             }
