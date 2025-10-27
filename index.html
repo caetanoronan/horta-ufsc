@@ -24,10 +24,6 @@
         .page.active {
             display: block;
         }
-                    aria_theme: 'Alternar tema',
-                    aria_theme_mobile: 'Alternar tema (mobile)',
-                    aria_lang_select: 'Selecionar idioma',
-                    aria_menu_open: 'Abrir menu',
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
@@ -39,6 +35,12 @@
             color: #22c55e; /* green-500 */
             border-bottom: 2px solid #22c55e;
         }
+        /* Acessibilidade: foco visível */
+        a:focus-visible, button:focus-visible, select:focus-visible {
+            outline: 2px solid #22c55e;
+            outline-offset: 2px;
+            border-radius: 6px;
+        }
         /* Dark mode overrides to improve contrast when using CDN classes */
         .dark body { background-color: #0f172a; color: #e5e7eb; }
         .dark .bg-white { background-color: #1f2937 !important; }
@@ -49,6 +51,21 @@
         .dark .text-gray-500 { color: #cbd5e1 !important; }
         .dark .border-gray-200 { border-color: #374151 !important; }
         .dark header { background-color: #111827 !important; }
+
+        /* Estilos de impressão */
+        @media print {
+            header, footer, #music-toggle { display: none !important; }
+            body { background: #ffffff !important; color: #000000 !important; }
+            .page { display: none !important; }
+            .page.active { display: block !important; }
+            .shadow-md, .shadow-lg, .shadow-xl, .shadow-sm { box-shadow: none !important; }
+            .bg-white, .dark .bg-gray-800, .bg-gray-50, .bg-green-50, .bg-blue-50, .bg-yellow-50 { background: #ffffff !important; }
+            .text-gray-600, .text-gray-700, .text-gray-800, .text-gray-900 { color: #000000 !important; }
+            .border, .border-gray-200, .dark .border-gray-700 { border-color: #000000 !important; }
+            a { color: #000 !important; text-decoration: none !important; }
+            table { page-break-inside: auto; }
+            tr { page-break-inside: avoid; page-break-after: auto; }
+        }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-800 dark:bg-gray-900 dark:text-gray-100">
@@ -517,6 +534,10 @@
                             </svg>
                             <span data-i18n="mat_download">Baixar CSV</span>
                         </button>
+                        <button id="print-materials-btn" class="inline-flex items-center gap-2 bg-white text-gray-700 border border-gray-300 font-medium py-2 px-4 rounded-lg hover:bg-gray-50 transition dark:bg-gray-800 dark:text-gray-200 dark:border-gray-600 dark:hover:bg-gray-700">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M6 2a2 2 0 00-2 2v2h16V4a2 2 0 00-2-2H6z"/><path fill-rule="evenodd" d="M4 8a2 2 0 00-2 2v5a3 3 0 003 3h1v-3a3 3 0 013-3h6a3 3 0 013 3v3h1a3 3 0 003-3v-5a2 2 0 00-2-2H4zm5 10h6v2H9v-2z" clip-rule="evenodd"/></svg>
+                            <span data-i18n="print_btn">Imprimir / Salvar PDF</span>
+                        </button>
                     </div>
                 </div>
 
@@ -556,6 +577,13 @@
             <div class="bg-white p-6 md:p-8 rounded-lg shadow-xl">
                 <h2 class="text-3xl font-bold text-green-700 mb-6 border-b-2 border-green-200 pb-2" data-i18n="cron_title">Cronograma (12 semanas)</h2>
                 <p class="text-gray-600 mb-6" data-i18n="cron_intro">Resumo das fases, atividades-chave e marcos para a implantação inicial da horta comunitária na CEU/UFSC.</p>
+
+                <div class="mb-4 flex justify-end">
+                    <button id="print-cronograma-btn" class="inline-flex items-center gap-2 bg-white text-gray-700 border border-gray-300 font-medium py-2 px-4 rounded-lg hover:bg-gray-50 transition dark:bg-gray-800 dark:text-gray-200 dark:border-gray-600 dark:hover:bg-gray-700">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M6 2a2 2 0 00-2 2v2h16V4a2 2 0 00-2-2H6z"/><path fill-rule="evenodd" d="M4 8a2 2 0 00-2 2v5a3 3 0 003 3h1v-3a3 3 0 013-3h6a3 3 0 013 3v3h1a3 3 0 003-3v-5a2 2 0 00-2-2H4zm5 10h6v2H9v-2z" clip-rule="evenodd"/></svg>
+                        <span data-i18n="print_btn">Imprimir / Salvar PDF</span>
+                    </button>
+                </div>
 
                 <div class="overflow-x-auto rounded-lg border border-gray-200 dark:border-gray-700 shadow-sm">
                     <table class="w-full text-sm text-left text-gray-600 dark:text-gray-300">
@@ -773,7 +801,7 @@
                     mat_intro: 'Lista completa de materiais, ferramentas e insumos para a implantação e manutenção da horta comunitária. Use os filtros abaixo para facilitar a busca.',
                     mat_filter_label: 'Filtrar por Categoria:',
                     mat_filter_all: 'Todas',
-                    mat_download: 'Baixar CSV',
+                    mat_download: 'Baixar CSV (PT)',
                     mat_loading: 'Carregando materiais...',
                     mat_error: 'Erro ao carregar a lista de materiais. Verifique se o arquivo MATERIAIS.csv está disponível.',
                     mat_th_category: 'Categoria',
@@ -981,7 +1009,8 @@
                     credits_refs_item_tcc: 'Trabajo de Conclusión de Curso — Ronan (PDF)',
                     credits_refs_item_plano_html: 'Guia Prático: Plano de Ação (HTML)',
                     credits_refs_item_ajustes_txt: 'Ajustes finais do projeto (TXT)',
-                    footer_text: '&copy; 2025 Projeto de Extensão Horta Comunitária UFSC. Desenvolvido com a comunidade.'
+                    footer_text: '&copy; 2025 Projeto de Extensão Horta Comunitária UFSC. Desenvolvido com a comunidade.',
+                    print_btn: 'Imprimir / Salvar PDF'
                 },
                 es: {
                     site_name: 'Huerta UFSC',
@@ -1002,7 +1031,7 @@
                     mat_intro: 'Lista completa de materiales, herramientas e insumos para la implantación y mantenimiento de la huerta comunitaria. Use los filtros abajo para facilitar la búsqueda.',
                     mat_filter_label: 'Filtrar por Categoría:',
                     mat_filter_all: 'Todas',
-                    mat_download: 'Descargar CSV',
+                    mat_download: 'Descargar CSV (ES)',
                     mat_loading: 'Cargando materiales...',
                     mat_error: 'Error al cargar la lista de materiales. Verifique si el archivo MATERIAIS.csv está disponible.',
                     mat_th_category: 'Categoría',
@@ -1209,7 +1238,8 @@
                     credits_refs_item_tcc: 'Trabalho de Conclusão de Curso — Ronan (PDF)',
                     credits_refs_item_plano_html: 'Guía Práctica: Plan de Acción (HTML)',
                     credits_refs_item_ajustes_txt: 'Ajustes finales del proyecto (TXT)',
-                    footer_text: '&copy; 2025 Proyecto de Extensión Huerta Comunitaria UFSC. Desarrollado con la comunidad.'
+                    footer_text: '&copy; 2025 Proyecto de Extensión Huerta Comunitaria UFSC. Desarrollado con la comunidad.',
+                    print_btn: 'Imprimir / Guardar PDF'
                 }
             };
 
@@ -1287,8 +1317,10 @@
                 if (targetPage) targetPage.classList.add('active');
 
                 navLinks.forEach(link => link.classList.remove('active'));
+                navLinks.forEach(link => link.removeAttribute('aria-current'));
                 document.querySelectorAll(`.nav-link[href="#${pageId}"]`).forEach(activeLink => {
                     activeLink.classList.add('active');
+                    activeLink.setAttribute('aria-current', 'page');
                 });
                 
                 if (mobileMenu) mobileMenu.classList.add('hidden');
@@ -1546,37 +1578,74 @@
                 });
             }
             
+            // CSV helpers (escape and generate in current language)
+            function csvEscape(value) {
+                const v = String(value ?? '');
+                const needsQuotes = /[",\n]/.test(v);
+                const escaped = v.replace(/"/g, '""');
+                return needsQuotes ? `"${escaped}"` : escaped;
+            }
+
+            function generateCSV(data, lang = 'pt') {
+                const rows = [];
+                if (lang === 'es') {
+                    const headers = [
+                        translations[lang]?.mat_th_category || 'Categoría',
+                        translations[lang]?.mat_th_item || 'Ítem',
+                        translations[lang]?.mat_th_spec || 'Especificación',
+                        translations[lang]?.mat_th_qty || 'Cant.',
+                        translations[lang]?.mat_th_notes || 'Observaciones'
+                    ];
+                    rows.push(headers);
+                    data.forEach(row => {
+                        const t = translateMaterialsRow(row, 'es');
+                        rows.push([t.categoria, t.item, t.spec, t.qty, t.notes]);
+                    });
+                } else {
+                    const headers = ['Categoria', 'Item', 'Especificação', 'Qtde', 'Observações'];
+                    rows.push(headers);
+                    data.forEach(row => {
+                        const spec = row['Especificação/Sugestão'] || row['Especificação'] || row.Especificacao || '';
+                        const qty = row.Qtde || row.Quantidade || '';
+                        const notes = row['Observações'] || row.Observacoes || '';
+                        rows.push([row.Categoria || '', row.Item || '', spec, qty, notes]);
+                    });
+                }
+                return rows.map(r => r.map(csvEscape).join(',')).join('\n');
+            }
+
             // Download CSV button
             const downloadBtn = document.getElementById('download-csv-btn');
             if (downloadBtn) {
                 downloadBtn.addEventListener('click', () => {
                     const selectedCategory = categoryFilter.value;
                     let dataToDownload = materialsData;
-                    
                     if (selectedCategory !== 'all') {
                         dataToDownload = materialsData.filter(row => row.Categoria === selectedCategory);
                     }
-                    
-                    // Convert to CSV
-                    if (dataToDownload.length === 0) return;
-                    
-                    const headers = Object.keys(dataToDownload[0]);
-                    const csvContent = [
-                        headers.join(','),
-                        ...dataToDownload.map(row => headers.map(h => row[h] || '').join(','))
-                    ].join('\n');
-                    
-                    // Download
+                    if (!dataToDownload.length) return;
+                    const csvContent = generateCSV(dataToDownload, currentLang);
                     const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
                     const link = document.createElement('a');
                     const url = URL.createObjectURL(blob);
                     link.setAttribute('href', url);
-                    link.setAttribute('download', `materiais_horta_${selectedCategory !== 'all' ? selectedCategory : 'completo'}.csv`);
+                    const langSuffix = currentLang === 'es' ? 'es' : 'pt';
+                    link.setAttribute('download', `materiais_horta_${selectedCategory !== 'all' ? selectedCategory : 'completo'}_${langSuffix}.csv`);
                     link.style.visibility = 'hidden';
                     document.body.appendChild(link);
                     link.click();
                     document.body.removeChild(link);
                 });
+            }
+
+            // Print buttons
+            const printMaterialsBtn = document.getElementById('print-materials-btn');
+            if (printMaterialsBtn) {
+                printMaterialsBtn.addEventListener('click', () => window.print());
+            }
+            const printCronogramaBtn = document.getElementById('print-cronograma-btn');
+            if (printCronogramaBtn) {
+                printCronogramaBtn.addEventListener('click', () => window.print());
             }
             
             // Load materials when page loads
