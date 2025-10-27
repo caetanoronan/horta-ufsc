@@ -1,0 +1,23 @@
+Categoria,Item,Especificação/Sugestão,Quantidade,Unidade,Preço Unitário (R$),Subtotal (R$),Fornecedor/Link,Observações,Prioridade
+Ferramentas,Enxada,Enxada comum cabo de madeira,2,un,,,,"Comprar 2 para revezamento nos mutirões",Alta
+Ferramentas,Pá,Pá quadrada (terraceamento),2,un,,,,,Alta
+Ferramentas,Ancinho,Ancinho metálico,2,un,,,,,Média
+Ferramentas,Regador,10-12 L,2,un,,,,,Média
+EPIs,Luvas,Luvas para jardinagem (pares),10,par,,,,"Tamanhos variados",Alta
+Canteiros,Madeira/tijolos,Paletes ou tijolos reaproveitados,1,lote,,,,"Ver com manutenção/almoxarifado",Alta
+Canteiros,Cobertura morta,Palha/folhas secas/serragem,1,lote,,,,,Alta
+Irrigação,Mangueira,3/4" uso externo,30,m,,,,"Metros aproximados conforme layout",Alta
+Irrigação,Conectores,Engates rápidos e adaptadores,6,un,,,,,Média
+Irrigação,Chuveirinho/aspersor,Modelo simples,2,un,,,,,Média
+Irrigação (opcional),Kit gotejamento,Kit básico de gotejo,1,kit,,,,"Considerar no verão",Baixa
+Compostagem,Estrutura composteira,Paletes ou bombona ~200L,1,un,,,,"3 baias com paletes é ideal",Alta
+Compostagem,Termômetro,Termômetro de compostagem,1,un,,,,,Média
+Vermicompostagem (opcional),Minhocário,Plástico ou madeira,1,un,,,,,Baixa
+Vermicompostagem (opcional),Minhocas californianas,Eisenia fetida,1,kg,,,,,Baixa
+Coleta,Baldes com tampa,20 L,4,un,,,,"Para coleta de orgânicos nos blocos",Alta
+Sinalização,Placas e estacas,Impressas e plastificadas,1,lote,,,,"Pontos de coleta e canteiros",Média
+Substratos/insumos,Esterco curtido,Bovino/ave,200,L,,,,"Para preparo dos canteiros",Alta
+Substratos/insumos,Composto inicial,Composto orgânico,200,L,,,,"Para o start antes da composteira maturar",Alta
+Sementes/mudas,Folhosas diversas,Alface, rúcula, couve,1,lote,,,,"Adequar à estação",Alta
+Sementes/mudas,Temperos diversos,Manjericão, cebolinha, salsinha,1,lote,,,,"Adequar à estação",Alta
+Outros,Etiquetas resistentes,Plástico/madeira + caneta,1,lote,,,,"Identificação das culturas",Média
