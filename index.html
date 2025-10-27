@@ -24,6 +24,10 @@
         .page.active {
             display: block;
         }
+                    aria_theme: 'Alternar tema',
+                    aria_theme_mobile: 'Alternar tema (mobile)',
+                    aria_lang_select: 'Selecionar idioma',
+                    aria_menu_open: 'Abrir menu',
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
@@ -68,27 +72,27 @@
                 <a href="#materiais" class="nav-link text-gray-600 hover:text-green-600 font-medium pb-1" data-i18n="nav_materials">Materiais</a>
                 <a href="#cronograma" class="nav-link text-gray-600 hover:text-green-600 font-medium pb-1" data-i18n="nav_schedule">Cronograma</a>
                 <a href="#creditos" class="nav-link text-gray-600 hover:text-green-600 font-medium pb-1" data-i18n="nav_credits">Créditos</a>
-                <button class="theme-toggle hidden md:inline-flex items-center gap-2 border border-gray-200 rounded-lg px-3 py-1.5 text-sm text-gray-700 hover:bg-gray-50 dark:border-gray-600 dark:text-gray-200 dark:hover:bg-gray-700 transition" aria-label="Alternar tema">
+                <button class="theme-toggle hidden md:inline-flex items-center gap-2 border border-gray-200 rounded-lg px-3 py-1.5 text-sm text-gray-700 hover:bg-gray-50 dark:border-gray-600 dark:text-gray-200 dark:hover:bg-gray-700 transition" data-i18n="aria_theme" data-i18n-attr="aria-label" aria-label="Alternar tema">
                     <span class="icon-sun">🌞</span>
                     <span class="icon-moon hidden">🌙</span>
-                    <span class="sr-only">Alternar tema</span>
+                    <span class="sr-only" data-i18n="aria_theme">Alternar tema</span>
                 </button>
-                <select class="lang-select hidden md:inline-flex ml-3 border border-gray-200 dark:border-gray-600 rounded-lg px-2 py-1 text-sm bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200">
+                <select class="lang-select hidden md:inline-flex ml-3 border border-gray-200 dark:border-gray-600 rounded-lg px-2 py-1 text-sm bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200" data-i18n="aria_lang_select" data-i18n-attr="aria-label" aria-label="Selecionar idioma">
                     <option value="pt">PT</option>
                     <option value="es">ES</option>
                 </select>
             </div>
             <!-- Menu Mobile -->
              <div class="md:hidden flex items-center gap-3">
-                <button class="theme-toggle inline-flex items-center justify-center border border-gray-200 dark:border-gray-600 rounded-lg p-2 text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700 transition" aria-label="Alternar tema (mobile)">
+                <button class="theme-toggle inline-flex items-center justify-center border border-gray-200 dark:border-gray-600 rounded-lg p-2 text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700 transition" data-i18n="aria_theme_mobile" data-i18n-attr="aria-label" aria-label="Alternar tema (mobile)">
                     <span class="icon-sun">🌞</span>
                     <span class="icon-moon hidden">🌙</span>
                 </button>
-                <select class="lang-select inline-flex border border-gray-200 dark:border-gray-600 rounded-lg px-2 py-1 text-sm bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200" aria-label="Seleccionar idioma">
+                <select class="lang-select inline-flex border border-gray-200 dark:border-gray-600 rounded-lg px-2 py-1 text-sm bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200" data-i18n="aria_lang_select" data-i18n-attr="aria-label" aria-label="Selecionar idioma">
                     <option value="pt">PT</option>
                     <option value="es">ES</option>
                 </select>
-                <button id="menu-btn" class="text-gray-600 hover:text-green-600 focus:outline-none" aria-label="Abrir menu">
+                <button id="menu-btn" class="text-gray-600 hover:text-green-600 focus:outline-none" data-i18n="aria_menu_open" data-i18n-attr="aria-label" aria-label="Abrir menu">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
                 </button>
             </div>
@@ -758,6 +762,10 @@
                     nav_schedule: 'Cronograma',
                     nav_materials: 'Materiais',
                     nav_credits: 'Créditos',
+                    aria_theme: 'Alternar tema',
+                    aria_theme_mobile: 'Alternar tema (mobile)',
+                    aria_lang_select: 'Selecionar idioma',
+                    aria_menu_open: 'Abrir menu',
                     mat_title: 'Materiais Necessários',
                     mat_intro: 'Lista completa de materiais, ferramentas e insumos para a implantação e manutenção da horta comunitária. Use os filtros abaixo para facilitar a busca.',
                     mat_filter_label: 'Filtrar por Categoria:',
@@ -983,6 +991,10 @@
                     nav_schedule: 'Cronograma',
                     nav_materials: 'Materiales',
                     nav_credits: 'Créditos',
+                    aria_theme: 'Cambiar tema',
+                    aria_theme_mobile: 'Cambiar tema (móvil)',
+                    aria_lang_select: 'Seleccionar idioma',
+                    aria_menu_open: 'Abrir menú',
                     mat_title: 'Materiales Necesarios',
                     mat_intro: 'Lista completa de materiales, herramientas e insumos para la implantación y mantenimiento de la huerta comunitaria. Use los filtros abajo para facilitar la búsqueda.',
                     mat_filter_label: 'Filtrar por Categoría:',
@@ -1202,12 +1214,20 @@
                 document.querySelectorAll('[data-i18n]').forEach(el => {
                     const key = el.getAttribute('data-i18n');
                     const value = translations[lang] && translations[lang][key];
-                    if (value) {
-                        if (el.hasAttribute('data-i18n-html')) {
-                            el.innerHTML = value;
-                        } else {
-                            el.textContent = value;
-                        }
+                    if (!value) return;
+
+                    const attrList = el.getAttribute('data-i18n-attr');
+                    if (attrList) {
+                        attrList.split(',').map(a => a.trim()).forEach(attr => {
+                            if (attr) el.setAttribute(attr, value);
+                        });
+                        return;
+                    }
+
+                    if (el.hasAttribute('data-i18n-html')) {
+                        el.innerHTML = value;
+                    } else {
+                        el.textContent = value;
                     }
                 });
             }
@@ -1303,7 +1323,7 @@
                     
                     const csvText = await response.text();
                     materialsData = parseCSV(csvText);
-                    
+
                     // Extract unique categories
                     materialsData.forEach(row => {
                         if (row.Categoria) allCategories.add(row.Categoria);
@@ -1330,19 +1350,39 @@
             }
             
             function parseCSV(csvText) {
-                const lines = csvText.trim().split('\n');
-                const headers = lines[0].split(',').map(h => h.trim());
-                const data = [];
-                
-                for (let i = 1; i < lines.length; i++) {
-                    const values = lines[i].split(',').map(v => v.trim());
-                    if (values.length === headers.length) {
-                        const row = {};
-                        headers.forEach((header, index) => {
-                            row[header] = values[index];
-                        });
-                        data.push(row);
+                // Robust CSV parser supporting quotes and commas within fields
+                const lines = csvText.replace(/\r/g, '').split('\n').filter(l => l.length);
+                const parseLine = (line) => {
+                    const result = [];
+                    let cur = '';
+                    let inQuotes = false;
+                    for (let i = 0; i < line.length; i++) {
+                        const ch = line[i];
+                        if (ch === '"') {
+                            if (inQuotes && line[i + 1] === '"') { // escaped quote
+                                cur += '"';
+                                i++;
+                            } else {
+                                inQuotes = !inQuotes;
+                            }
+                        } else if (ch === ',' && !inQuotes) {
+                            result.push(cur);
+                            cur = '';
+                        } else {
+                            cur += ch;
+                        }
                     }
+                    result.push(cur);
+                    return result.map(v => v.trim());
+                };
+
+                const headers = parseLine(lines[0]);
+                const data = [];
+                for (let i = 1; i < lines.length; i++) {
+                    const values = parseLine(lines[i]);
+                    const row = {};
+                    headers.forEach((h, idx) => { row[h] = values[idx] ?? ''; });
+                    data.push(row);
                 }
                 return data;
             }
@@ -1369,7 +1409,7 @@
                     tr.innerHTML = `
                         <td class="px-6 py-4 font-medium text-gray-900 dark:text-gray-100">${row.Categoria || ''}</td>
                         <td class="px-6 py-4">${row.Item || ''}</td>
-                        <td class="px-6 py-4">${row['Especificação'] || row.Especificacao || ''}</td>
+                        <td class="px-6 py-4">${row['Especificação/Sugestão'] || row['Especificação'] || row.Especificacao || ''}</td>
                         <td class="px-6 py-4">${row.Qtde || row.Quantidade || ''}</td>
                         <td class="px-6 py-4">${row['Observações'] || row.Observacoes || ''}</td>
                     `;
@@ -1389,7 +1429,6 @@
                     }
                     
                     renderMaterialsTable(filteredData);
-                    applyI18n(currentLanguage);
                 });
             }
             
