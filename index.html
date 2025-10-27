@@ -538,6 +538,17 @@
         </div>
     </footer>
 
+    <!-- Reprodutor de música de fundo -->
+    <div class="fixed bottom-6 right-6 z-50">
+        <button id="music-toggle" class="bg-green-600 hover:bg-green-700 text-white rounded-full p-4 shadow-lg transition-all duration-300 flex items-center gap-2" aria-label="Controlar música de fundo">
+            <span class="music-icon-play">🎵</span>
+            <span class="music-icon-pause hidden">⏸️</span>
+        </button>
+        <audio id="background-music" loop>
+            <source src="Transformação_.mp3" type="audio/mpeg">
+        </audio>
+    </div>
+
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const navLinks = document.querySelectorAll('.nav-link');
@@ -921,6 +932,31 @@
             const storedLangPref = localStorage.getItem('lang') || 'pt';
             setLanguage(storedLangPref);
             langSelects.forEach(sel => sel.addEventListener('change', (e) => setLanguage(e.target.value)));
+
+            // Music player control
+            const musicToggle = document.getElementById('music-toggle');
+            const backgroundMusic = document.getElementById('background-music');
+            const musicIconPlay = document.querySelector('.music-icon-play');
+            const musicIconPause = document.querySelector('.music-icon-pause');
+            let isPlaying = false;
+
+            musicToggle.addEventListener('click', () => {
+                if (isPlaying) {
+                    backgroundMusic.pause();
+                    musicIconPlay.classList.remove('hidden');
+                    musicIconPause.classList.add('hidden');
+                } else {
+                    backgroundMusic.play().catch(err => {
+                        console.log('Error al reproducir música:', err);
+                    });
+                    musicIconPlay.classList.add('hidden');
+                    musicIconPause.classList.remove('hidden');
+                }
+                isPlaying = !isPlaying;
+            });
+
+            // Set volume to a comfortable level
+            backgroundMusic.volume = 0.3;
 
             function showPage(pageId) {
                 pages.forEach(page => page.classList.remove('active'));
