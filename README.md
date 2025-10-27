@@ -22,7 +22,7 @@ O projeto está dividido em quatro fases principais:
 
 ## 🚀 Visualizar o Site
 
-O site está disponível em: [https://[seu-usuario].github.io/horta-ufsc](https://[seu-usuario].github.io/horta-ufsc)
+O site está disponível em: [https://caetanoronan.github.io/horta-ufsc](https://caetanoronan.github.io/horta-ufsc)
 
 ## 🤝 Como Contribuir
 
@@ -36,11 +36,15 @@ Para participar do projeto:
 ## 📁 Estrutura do Projeto
 
 ```
-horta-ufsc/
-├── index.html          # Página principal do site
-├── README.md           # Documentação do projeto
-├── .gitignore         # Arquivos ignorados pelo Git
-└── assets/            # Recursos (imagens, CSS, JS)
+Horta UFSC/
+├── assets/
+│   └── css/
+│       └── style.css
+├── index.html
+├── README.md
+├── COMO_PUBLICAR.md
+├── .gitignore
+└── Horta Comunitária UFSC_ Guia Prático.pdf
 ```
 
 ## 📄 Licença
