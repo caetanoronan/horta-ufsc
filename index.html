@@ -712,7 +712,7 @@
             const pages = document.querySelectorAll('.page');
             const menuBtn = document.getElementById('menu-btn');
             const mobileMenu = document.getElementById('mobile-menu');
-            const mobileNavLinks = mobileMenu.querySelectorAll('.nav-link');
+            const mobileNavLinks = mobileMenu ? mobileMenu.querySelectorAll('.nav-link') : [];
             const themeToggles = document.querySelectorAll('.theme-toggle');
             const root = document.documentElement;
             const langSelects = document.querySelectorAll('.lang-select');
@@ -1259,6 +1259,7 @@
             const musicIconPause = document.querySelector('.music-icon-pause');
             let isPlaying = false;
 
+            if (musicToggle && backgroundMusic && musicIconPlay && musicIconPause) {
             musicToggle.addEventListener('click', () => {
                 if (isPlaying) {
                     backgroundMusic.pause();
@@ -1276,6 +1277,7 @@
 
             // Set volume to a comfortable level
             backgroundMusic.volume = 0.3;
+            }
 
             function showPage(pageId) {
                 pages.forEach(page => page.classList.remove('active'));
@@ -1316,7 +1318,9 @@
                 });
             });
 
-            menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+            if (menuBtn && mobileMenu) {
+                menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+            }
             
             // Materials section - CSV loader and renderer
             let materialsData = [];
