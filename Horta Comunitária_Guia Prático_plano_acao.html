@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Horta Comunitária UFSC: Guia e Plano</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Estilo para transição suave */
+        .page {
+            display: none;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        .page.active {
+            display: block;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .nav-link {
+            transition: all 0.2s ease;
+        }
+        .nav-link.active {
+            color: #22c55e; /* green-500 */
+            border-bottom: 2px solid #22c55e;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <!-- Cabeçalho e Navegação -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-green-600" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M17.713,4.33A9.946,9.946,0,0,0,10,2,10,10,0,0,0,3.837,16.163a1,1,0,0,0,1.414-1.414A8,8,0,1,1,10,18a7.934,7.934,0,0,1-5.657-2.343,1,1,0,0,0-1.414,1.414A9.946,9.946,0,0,0,10,20a10,10,0,0,0,7.713-15.67ZM12.2,9.336,10.245,6.209a1,1,0,0,0-1.732,1L10.2,9.8,7.379,8.514a1,1,0,0,0-1.2,1.6l2.1,3.428,2.268-4.113A1.011,1.011,0,0,0,12.2,9.336Z"/>
+                </svg>
+                <h1 class="text-xl font-bold text-gray-700">Horta UFSC</h1>
+            </div>
+            <div class="hidden md:flex items-center space-x-6">
+                <a href="#inicio" class="nav-link text-gray-600 hover:text-green-600 font-medium pb-1 active">Início</a>
+                <a href="#o-projeto" class="nav-link text-gray-600 hover:text-green-600 font-medium pb-1">O Projeto</a>
+                <a href="#como-participar" class="nav-link text-gray-600 hover:text-green-600 font-medium pb-1">Como Participar</a>
+                <a href="#guia-pratico" class="nav-link text-gray-600 hover:text-green-600 font-medium pb-1">Guia Prático</a>
+                <a href="#compostagem" class="nav-link text-gray-600 hover:text-green-600 font-medium pb-1">Compostagem</a>
+                <a href="#plano-estrategico" class="nav-link text-gray-600 hover:text-green-600 font-medium pb-1">Plano Estratégico</a>
+            </div>
+            <!-- Menu Mobile -->
+             <div class="md:hidden">
+                <button id="menu-btn" class="text-gray-600 hover:text-green-600 focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
+        </nav>
+        <!-- Mobile Nav -->
+        <div id="mobile-menu" class="hidden md:hidden px-6 pb-4 space-y-2">
+            <a href="#inicio" class="block nav-link text-gray-600 hover:text-green-600 font-medium active">Início</a>
+            <a href="#o-projeto" class="block nav-link text-gray-600 hover:text-green-600 font-medium">O Projeto</a>
+            <a href="#como-participar" class="block nav-link text-gray-600 hover:text-green-600 font-medium">Como Participar</a>
+            <a href="#guia-pratico" class="block nav-link text-gray-600 hover:text-green-600 font-medium">Guia Prático</a>
+            <a href="#compostagem" class="block nav-link text-gray-600 hover:text-green-600 font-medium">Compostagem</a>
+            <a href="#plano-estrategico" class="block nav-link text-gray-600 hover:text-green-600 font-medium">Plano Estratégico</a>
+        </div>
+    </header>
+
+    <main class="container mx-auto p-4 md:p-8">
+        
+        <!-- Página: Início -->
+        <section id="inicio" class="page active">
+            <div class="bg-white p-6 md:p-8 rounded-lg shadow-xl">
+                 <h2 class="text-3xl font-bold text-green-700 mb-2">Guia Prático da Horta Comunitária</h2>
+                 <p class="text-lg text-gray-600 mb-8">Cultivando alimentos, semeando comunidade.</p>
+
+                <div class="grid md:grid-cols-2 gap-8 items-center">
+                    <div class="space-y-4">
+                        <h3 class="text-2xl font-semibold text-gray-800">Bem-vindo(a)!</h3>
+                        <p class="text-gray-600 leading-relaxed">
+                            Este é o seu guia completo para participar e aproveitar ao máximo a Horta Comunitária Agroecológica na Moradia Estudantil da UFSC. Nossa horta é um espaço de aprendizado, convivência e sustentabilidade.
+                        </p>
+                        <p class="text-gray-600 leading-relaxed">
+                            Explore as seções para descobrir como colocar a mão na terra, aprender sobre cultivo e compostagem, e fazer parte desta transformação coletiva.
+                        </p>
+                        <div class="pt-4">
+                            <a href="#o-projeto" class="nav-link-btn inline-block bg-green-600 text-white font-bold py-3 px-6 rounded-lg hover:bg-green-700 transition duration-300 shadow-lg">Conheça o Projeto</a>
+                        </div>
+                    </div>
+
+                    <div class="bg-green-50 border-2 border-green-200 p-6 rounded-lg">
+                        <h4 class="text-xl font-bold text-green-800 mb-4">O que você encontrará aqui?</h4>
+                        <ul class="space-y-3 list-disc list-inside text-gray-700">
+                           <li><span class="font-semibold">O Projeto:</span> Entenda nossos objetivos e a importância da horta para a comunidade.</li>
+                           <li><span class="font-semibold">Como Participar:</span> Um passo a passo simples para você se juntar a nós nos mutirões e atividades.</li>
+                           <li><span class="font-semibold">Guia de Cultivo:</span> Dicas práticas sobre o que plantar em cada estação e como cuidar das hortaliças.</li>
+                           <li><span class="font-semibold">Compostagem:</span> Aprenda a transformar resíduos orgânicos em adubo rico para nossas plantas.</li>
+                           <li><span class="font-semibold">Plano Estratégico:</span> Acesse a documentação completa do projeto de extensão.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Página: O Projeto -->
+        <section id="o-projeto" class="page">
+             <div class="bg-white p-6 md:p-8 rounded-lg shadow-xl">
+                <h2 class="text-3xl font-bold text-green-700 mb-6 border-b-2 border-green-200 pb-2">O Projeto: Biologia e Sociedade</h2>
+                <p class="text-gray-600 mb-4 leading-relaxed">
+                    A Horta Comunitária é mais do que um espaço para plantar. É uma iniciativa de extensão universitária que une conhecimento científico e popular para promover sustentabilidade, segurança alimentar e integração social na Moradia Estudantil da UFSC (CEU).
+                </p>
+                <div class="grid md:grid-cols-5 gap-8 mt-8 items-center">
+                    <div class="md:col-span-3 space-y-6">
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-800 mb-3">Nossos Objetivos</h3>
+                            <ul class="space-y-3 list-disc list-inside text-gray-600">
+                                <li><span class="font-semibold">Sustentabilidade:</span> Implementar um sistema de compostagem para transformar resíduos orgânicos em adubo rico para nossa horta.</li>
+                                <li><span class="font-semibold">Alimentação Saudável:</span> Aumentar o acesso a alimentos frescos, nutritivos e livres de agrotóxicos para todos os moradores.</li>
+                                <li><span class="font-semibold">Convivência:</span> Criar um espaço de aprendizado e colaboração, fortalecendo os laços de amizade e o espírito comunitário.</li>
+                                <li><span class="font-semibold">Aprendizado:</span> Realizar oficinas sobre agroecologia, compostagem e cultivo, conectando a teoria da sala de aula com a prática do dia a dia.</li>
+                            </ul>
+                        </div>
+                        <div class="bg-green-50 p-6 rounded-lg border border-green-200">
+                            <h3 class="text-xl font-bold text-gray-800 mb-3">Por que uma Horta na CEU?</h3>
+                            <p class="text-gray-600 leading-relaxed">A Moradia Estudantil acolhe estudantes de diversas realidades. A horta responde a uma demanda real por mais autonomia, bem-estar e acesso a alimentos de qualidade. Além disso, é uma solução prática e ecológica para a gestão dos resíduos orgânicos que geramos, transformando um problema em um recurso valioso.</p>
+                        </div>
+                    </div>
+                    <div class="md:col-span-2 mt-6 md:mt-0 p-4">
+                        <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjUwMCIgdmlld0JveD0iMCAwIDQwMCA1MDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGc+PHJlY3Qgd2lkdGg9IjQwMCIgaGVpZ2h0PSI1MDAiIGZpbGw9IiNmYWY4ZjIiIHJ4PSI4Ii8+PHBhdGggZD0iTTAgNDUwIEMxNTAgNDMwIDMwMCA0NDAgNDAwIDQzMFY1MDBIMFoiIGZpbGw9IiNhM2JlODQiLz48cGF0aCBkPSJNMCA1MDAgVjQyMCBDMTUwIDQ0MCAyNTAgNDMwIDQwMCA0NTBWMjAwWiIgZmlsbD0iI2M4ZTY2YiIvPjxjaXJjbGUgY3g9IjMzMCIgY3k9IjgwIiByPSI0MCIgZmlsbD0iI2ZkZWM4NCIvPjxnPjxwb2x5Z29uIHBvaW50cz0iMjAwLDM0MCAxODAsNDA1IDIyMCw0MDUiIGZpbGw9IiM4ZDc1NjkiLz48cmVjdCB4PSIxOTAiIHk9IjI0MCIgd2lkdGg9IjIwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iIzgyNjk1YyIvPjxjaXJjbGUgY3g9IjIwMCIgY3k9IjIyMCIgcj0iNDAiIGZpbGw9IiNmZjk4MDAiLz48cGF0aCBkPSJNMTYwLDIyMCBDMTYwLDE4MCAxNzAsMTYwIDIwMCwxNjAgQzIzMCwxNjAgMjQwLDE4MCAyNDAsMjIwWiIgZmlsbD0iIzM3NDA1MSIvPjwvZz48Zz48cGF0aCBkPSJNMzAwLDQzMCBMMjg1LDM4MCBMMzE1LDM4MFoiIGZpbGw9IiNhM2JlODQiLz48cmVjdCB4PSIyOTUiIHk9IjMzMCIgd2lkdGg9IjEwIiBoZWlnaHQ9IjUwIiBmaWxsPSIjYzhFNjZiIi8+PHBhdGggZD0iTTI5MCwzNDAgQzI4MCwzMjAgMzIwLDMyMCAzMTAsMzQwWiIgZmlsbD0iI2Y0NzQ2YiIvPjwvZz48Zz48cGF0aCBkPSJNNzAsNDMwIEw4MCwzODAgTDYwLDM4MFoiIGZpbGw9IiM4MmE5NzEiLz48cmVjdCB4PSI2NSIgeT0iMzMwIiB3aWR0aD0iMTAiIGhlaWdodD0iNTAiIGZpbGw9IiM3Mzk1NjIiLz48cGF0aCBkPSJNNzAsMzMwIEM2MCwzMTAgODAsMzEwIDcwLDMzMFoiIGZpbGw9IiM4YmMzNDMiLz48cGF0aCBkPSJNNzAsMzMwIEM4MCwzNTAgNjAsMzUwIDcwLDMzMFoiIGZpbGw9IiNhOGIzOTciLz48L2c+PC9nPjwvc3ZnPg==" alt="Ilustração de pessoas colaborando na horta comunitária." class="rounded-lg shadow-lg w-full h-auto object-cover">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Página: Como Participar -->
+        <section id="como-participar" class="page">
+             <div class="bg-white p-6 md:p-8 rounded-lg shadow-xl">
+                <h2 class="text-3xl font-bold text-green-700 mb-6 border-b-2 border-green-200 pb-2">Como Fazer Parte?</h2>
+                <p class="text-gray-600 mb-8 max-w-3xl">
+                    Participar é simples e não exige experiência prévia! Todos são bem-vindos a contribuir, aprender e colher. Siga os passos abaixo para se juntar a nós.
+                </p>
+
+                <div class="my-8 text-center p-6 bg-lime-50 rounded-lg">
+                    <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAwIiBoZWlnaHQ9IjQwMCIgdmlld0JveD0iMCAwIDgwMCA0MDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHJlY3Qgd2lkdGg9IjgwMCIgaGVpZ2h0PSI0MDAiIGZpbGw9IiNmN2ZlZTgiIHJ4PSIxMiIvPjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDI1MCAxNTApIHNjYWxlKDEuNSkiPjxwYXRoIGQ9Ik0xMDAgODBMMTAwIDEwMEM4MCAxMjAgMTIwIDEyMCAxMDAgMTAwWiIgZmlsbD0iIzc4NzE2YyIvPjxwYXRoIGQ9Ik0zMCA5MEM1MCAxMjAgNzAgOTAgNzAgNzBDNzAgNDAgNDAgNDAgNDAgNzBDNDAgODAgMzAgODAgMzAgOTBaIiBmaWxsPSIjNGFkMzczIi8+PHBhdGggZD0iTTcwIDcwQzcwIDkwIDkwIDkwIDkwIDcwQzkwIDQwIDYwIDQwIDYwIDcwQzYwIDgwIDcwIDgwIDcwIDcwWiIgZmlsbD0iI2E4YjM5NyIvPjxwYXRoIGQ9Ik02MCA3MEM2MCA0MCAzMCA0MCAzMCA3MEMzMCA5MCA2MCA5MCA2MCA3MFoiIGZpbGw9IiM4YmMzNDMiLz48L2c+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNDUwIDEzMCkgc2NhbGUoMS4yKSI+PHJlY3QgeD0iNDAiIHk9IjYwIiB3aWR0aD0iMjAiIGhlaWdodD0iMTAwIiByeD0iMTAiIGZpbGw9IiM4ZDg2N2YiLz48cGF0aCBkPSJNODAgODBMODAgMTYwQzE0MCAxNjAgMTQwIDgwWiIgZmlsbD0iI2E5YTJhOCIvPjxwYXRoIGQ9Ik04MCAxNjBDMTQwIDE2MCAxNDAgODBMOTAgNzVDMTAwIDExMCA4MCAxMjAgODAgMTYwWiIgZmlsbD0iI2M0YzFjMCIvPjxwYXRoIGQ9Ik01MCA2MEMxMCA2MCAxMCAyMCA1MCAyMFY2MFoiIGZpbGw9IiNmYzkyOGQiLz48L2c+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTAwIDIwMCkgc2NhbGUoMSkiPjxwYXRoIGQ9Ik01MCA4MEMtMjAgODAgLTIwIDE2MCA1MCAxNjBDMTIwIDE2MCAxMjAgODBaIiBmaWxsPSIjYzg3NTAwIi8+PHBhdGggZD0iTTUwIDgwQzEyMCA4MCAxMjAgMTYwQzEwMCAyMDAgMCAyMDAgMCAxNjBDLTIwIDE2MCAtMjAgODBaIiBmaWxsPSIjZjc5NjE2Ii8+PHBhdGggZD0iTTUwIDUwQzYwIDQwIDQwIDQwIDUwIDUwWiIgZmlsbD0iI2ZjYjcwNCIvPjxjaXJjbGUgY3g9IjUwIiBjeT0iMzAiIHI9IjMwIiBmaWxsPSIjMjI5NWVlIi8+PHBhdGggZD0iTTUwIDBDODAgMCAxMDAgMzAgODAgNTBDNjAgNjAgNDAgNjAgMjAgNTBDMCAzMCAyMCAwIDUwIDBaIiBmaWxsPSIjMWE3OGMyIi8+PC9nPjwvc3ZnPg==" alt="Ilustração de ferramentas de jardinagem como pá, regador e um broto de planta." class="rounded-lg w-full max-w-3xl mx-auto h-auto object-cover">
+                </div>
+
+                <div class="space-y-8">
+                    <!-- Passo 1 -->
+                    <div class="flex flex-col md:flex-row items-center gap-6">
+                        <div class="flex-shrink-0 bg-green-600 text-white rounded-full h-16 w-16 flex items-center justify-center text-2xl font-bold shadow-md">1</div>
+                        <div class="bg-gray-50 p-6 rounded-lg flex-grow border border-gray-200">
+                            <h3 class="text-xl font-bold text-gray-800 mb-2">Participe das Assembleias e Reuniões</h3>
+                            <p class="text-gray-600">Fique de olho nos murais e grupos de comunicação da CEU para saber as datas das nossas reuniões. É onde planejamos juntos os próximos passos, decidimos o que plantar e organizamos as atividades. Sua voz é fundamental!</p>
+                        </div>
+                    </div>
+                     <!-- Passo 2 -->
+                    <div class="flex flex-col md:flex-row items-center gap-6">
+                        <div class="flex-shrink-0 bg-green-600 text-white rounded-full h-16 w-16 flex items-center justify-center text-2xl font-bold shadow-md">2</div>
+                        <div class="bg-gray-50 p-6 rounded-lg flex-grow border border-gray-200">
+                            <h3 class="text-xl font-bold text-gray-800 mb-2">Venha para os Mutirões</h3>
+                            <p class="text-gray-600">Os mutirões são nossos dias de trabalho coletivo. Preparamos canteiros, plantamos mudas, regamos e cuidamos da horta. É a melhor forma de aprender na prática e se divertir. Não se preocupe, sempre há tarefas para todos os níveis de habilidade.</p>
+                        </div>
+                    </div>
+                     <!-- Passo 3 -->
+                    <div class="flex flex-col md:flex-row items-center gap-6">
+                        <div class="flex-shrink-0 bg-green-600 text-white rounded-full h-16 w-16 flex items-center justify-center text-2xl font-bold shadow-md">3</div>
+                         <div class="bg-gray-50 p-6 rounded-lg flex-grow border border-gray-200">
+                            <h3 class="text-xl font-bold text-gray-800 mb-2">Ajude na Gestão Diária</h3>
+                            <p class="text-gray-600">A horta precisa de cuidados diários. Você pode se voluntariar para regas, monitoramento de pragas ou para ajudar na organização da composteira. Poucos minutos do seu dia fazem uma grande diferença!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Página: Guia Prático -->
+        <section id="guia-pratico" class="page">
+             <div class="bg-white p-6 md:p-8 rounded-lg shadow-xl">
+                <h2 class="text-3xl font-bold text-green-700 mb-6 border-b-2 border-green-200 pb-2">Guia Prático de Cultivo</h2>
+                <p class="text-gray-600 mb-8">
+                   O que plantar em Florianópolis? Aqui estão algumas sugestões fáceis de cultivar em nosso clima, divididas por época do ano.
+                </p>
+
+                <div class="grid md:grid-cols-2 gap-8">
+                    <!-- Primavera/Verão -->
+                    <div class="bg-yellow-50 border border-yellow-200 p-6 rounded-lg">
+                        <h3 class="text-xl font-bold text-yellow-800 mb-4">Primavera / Verão (Setembro a Fevereiro)</h3>
+                         <ul class="space-y-2">
+                            <li class="flex items-start"><span class="text-yellow-600 mr-2">☀️</span> <strong>Hortaliças:</strong> Alface, rúcula, tomate cereja, pimentão, abobrinha, pepino.</li>
+                             <li class="flex items-start"><span class="text-yellow-600 mr-2">☀️</span> <strong>Temperos:</strong> Manjericão, cebolinha, salsinha, hortelã, alecrim.</li>
+                             <li class="flex items-start"><span class="text-yellow-600 mr-2">☀️</span> <strong>Dica:</strong> É a época de maior crescimento! Fique atento às regas, que devem ser mais frequentes, e ao controle de insetos.</li>
+                        </ul>
+                    </div>
+                    <!-- Outono/Inverno -->
+                    <div class="bg-blue-50 border border-blue-200 p-6 rounded-lg">
+                        <h3 class="text-xl font-bold text-blue-800 mb-4">Outono / Inverno (Março a Agosto)</h3>
+                         <ul class="space-y-2">
+                            <li class="flex items-start"><span class="text-blue-600 mr-2">❄️</span> <strong>Hortaliças:</strong> Couve, brócolis, cenoura, beterraba, rabanete, espinafre.</li>
+                             <li class="flex items-start"><span class="text-blue-600 mr-2">❄️</span> <strong>Temperos:</strong> Salsinha, cebolinha, coentro, orégano.</li>
+                             <li class="flex items-start"><span class="text-blue-600 mr-2">❄️</span> <strong>Dica:</strong> Algumas plantas se desenvolvem melhor com o clima mais ameno. A necessidade de rega diminui um pouco.</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="mt-10">
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">Tabela 1: Calendário de Plantio e Colheita (Exemplos)</h3>
+                    <div class="overflow-x-auto rounded-lg border border-gray-200 shadow-sm">
+                        <table class="w-full text-sm text-left text-gray-600">
+                            <thead class="bg-gray-100 text-gray-700 uppercase tracking-wider">
+                                <tr>
+                                    <th scope="col" class="px-6 py-3">Cultura</th>
+                                    <th scope="col" class="px-6 py-3">Época de Plantio</th>
+                                    <th scope="col" class="px-6 py-3">Início da Colheita</th>
+                                    <th scope="col" class="px-6 py-3">Dicas</th>
+                                </tr>
+                            </thead>
+                            <tbody class="bg-white">
+                                <tr class="border-b hover:bg-gray-50">
+                                    <td class="px-6 py-4 font-medium text-gray-900">Alface</td>
+                                    <td class="px-6 py-4">Ano todo</td>
+                                    <td class="px-6 py-4">40-60 dias</td>
+                                    <td class="px-6 py-4">No verão, plantar com sombra parcial.</td>
+                                </tr>
+                                <tr class="border-b hover:bg-gray-50">
+                                    <td class="px-6 py-4 font-medium text-gray-900">Tomate Cereja</td>
+                                    <td class="px-6 py-4">Agosto a Janeiro</td>
+                                    <td class="px-6 py-4">60-90 dias</td>
+                                    <td class="px-6 py-4">Precisa de estacas para apoiar o crescimento.</td>
+                                </tr>
+                                 <tr class="border-b hover:bg-gray-50">
+                                    <td class="px-6 py-4 font-medium text-gray-900">Cenoura</td>
+                                    <td class="px-6 py-4">Março a Setembro</td>
+                                    <td class="px-6 py-4">70-100 dias</td>
+                                    <td class="px-6 py-4">O solo deve ser fofo e sem pedras.</td>
+                                </tr>
+                                <tr class="border-b hover:bg-gray-50">
+                                    <td class="px-6 py-4 font-medium text-gray-900">Couve-folha</td>
+                                    <td class="px-6 py-4">Ano todo (melhor outono/inverno)</td>
+                                    <td class="px-6 py-4">70-90 dias</td>
+                                    <td class="px-6 py-4">Colha as folhas externas primeiro.</td>
+                                </tr>
+                                <tr class="hover:bg-gray-50">
+                                    <td class="px-6 py-4 font-medium text-gray-900">Manjericão</td>
+                                    <td class="px-6 py-4">Setembro a Fevereiro</td>
+                                    <td class="px-6 py-4">50-70 dias</td>
+                                    <td class="px-6 py-4">Gosta de muito sol. Podar as flores.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="mt-10 bg-gray-100 p-6 rounded-lg">
+                     <h3 class="text-xl font-bold text-gray-800 mb-4">Cuidados Essenciais</h3>
+                     <dl class="space-y-4">
+                         <div>
+                            <dt class="font-semibold text-gray-700">Regas:</dt>
+                            <dd class="text-gray-600 ml-4">Verifique a umidade da terra com o dedo. Se estiver seca, é hora de regar. Prefira regar no início da manhã ou no final da tarde.</dd>
+                         </div>
+                         <div>
+                            <dt class="font-semibold text-gray-700">Adubação:</dt>
+                            <dd class="text-gray-600 ml-4">Use o composto orgânico da nossa composteira! Ele nutre as plantas e melhora a qualidade do solo.</dd>
+                         </div>
+                          <div>
+                            <dt class="font-semibold text-gray-700">Manejo de "Pragas":</dt>
+                            <dd class="text-gray-600 ml-4">Muitos insetos são benéficos! Observamos e, se necessário, usamos caldas naturais (como de fumo ou de pimenta) para afastar os que causam danos, sem usar veneno.</dd>
+                         </div>
+                     </dl>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Página: Compostagem -->
+        <section id="compostagem" class="page">
+             <div class="bg-white p-6 md:p-8 rounded-lg shadow-xl">
+                <h2 class="text-3xl font-bold text-green-700 mb-6 border-b-2 border-green-200 pb-2">Compostagem: O Coração da Horta</h2>
+                <p class="text-gray-600 mb-8">
+                   Transformar nossos resíduos orgânicos em adubo é um dos pilares do projeto. Ao compostar, nós reduzimos o lixo, diminuímos a emissão de gases de efeito estufa e produzimos um fertilizante poderoso e gratuito para nossas plantas.
+                </p>
+
+                <h3 class="text-2xl font-semibold text-gray-800 mb-4">Compostagem Tradicional</h3>
+                <div class="grid md:grid-cols-3 gap-8 items-center">
+                     <!-- O que pode -->
+                    <div class="bg-green-50 border-2 border-green-200 p-6 rounded-lg">
+                        <h4 class="text-xl font-bold text-green-800 mb-4">✅ O que PODE ir:</h4>
+                        <p class="mb-4 text-sm text-green-700">(Materiais Úmidos e Secos)</p>
+                        <ul class="space-y-2 list-disc list-inside text-gray-700">
+                           <li>Cascas de frutas, verduras e legumes</li>
+                           <li>Borra de café e sachês de chá</li>
+                           <li>Cascas de ovos (amassadas)</li>
+                           <li>Folhas secas, serragem e palha</li>
+                           <li>Pedaços de papelão e papel (sem tinta)</li>
+                        </ul>
+                    </div>
+                     <!-- O que não pode -->
+                    <div class="bg-red-50 border-2 border-red-200 p-6 rounded-lg">
+                        <h4 class="text-xl font-bold text-red-800 mb-4">❌ O que NÃO PODE ir:</h4>
+                         <p class="mb-4 text-sm text-red-700">(Atraem animais e causam mau cheiro)</p>
+                         <ul class="space-y-2 list-disc list-inside text-gray-700">
+                           <li>Carnes, ossos e restos de peixe</li>
+                           <li>Laticínios (queijo, iogurte, etc.)</li>
+                           <li>Gorduras, óleos e alimentos cozidos</li>
+                           <li>Fezes de animais domésticos</li>
+                           <li>Produtos químicos</li>
+                        </ul>
+                    </div>
+                    <!-- Imagem -->
+                    <div class="flex items-center justify-center mt-4 md:mt-0">
+                         <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDIwMCAyMDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMCAtMjApIj48cGF0aCBkPSJNMjUgNzBINzVMMTgwIDc1VjE4MEgyNVoiIGZpbGw9IiNhMTgzNmMiLz48cGF0aCBkPSJNMjAgNzBMMTgwIDcwVjE4MEgyMFoiIGZpbGw9IiNiZDkyN2MiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDYgLTYpIi8+PHBhdGggZD0iTTIwIDcwTDE4MCA3MFYxODBIMjBaIiBmaWxsPSIjYzg5YzgwIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtNiAtNikiLz48cGF0aCBkPSJNMjAgNzBIMTgwTTIwIDEwMEgxODBNMjAgMTMwSDE4ME0yMCAxNjBIMTgwIiBzdHJva2U9IiM5NjcyNTkiIHN0cm9rZS13aWR0aD0iNCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+PHJlY3QgeD0iMTAiIHk9IjYwIiB3aWR0aD0iMTgwIiBoZWlnaHQ9IjEyMCIgcng9IjUiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzU3M2YyYyIgc3Ryb2tlLXdpZHRoPSIzIi8+PHJlY3QgeD0iMTAwIiB5PSIyMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjQwIiByeD0iNSIgZmlsbD0iI2I4NzMwYSIvPjxyZWN0IHg9IjEwMiIgeT0iMjIiIHdpZHRoPSI1NiIgaGVpZ2h0PSIzNiIgcng9IjMiIGZpbGw9IiNkODk5MzAiLz48cmVjdCB4PSI0MCIgeT0iMjAiIHdpZHRoPSI2MCIgaGVpZ2h0PSI0MCIgcng9IjUiIGZpbGw9IiNiODczMGEiLz48cmVjdCB4PSI0MiIgeT0iMjIiIHdpZHRoPSI1NiIgaGVpZ2h0PSIzNiIgcng9IjMiIGZpbGw9IiNkODk5MzAiLz48cGF0aCBkPSJNMTEwIDM1TDE0MCAzNU0xMjUgMjVMMTI1IDQ1IiBzdHJva2U9IiNiODczMGEiIHN0cm9rZS13aWR0aD0iNiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+PHBhdGggZD0iTTUwIDM1TDgwIDM1TTY1IDI1TDY1IDQ1IiBzdHJva2U9IiNiODczMGEiIHN0cm9rZS13aWR0aD0iNiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+PC9nPjwvc3ZnPg==" alt="Ilustração de uma composteira de madeira com materiais orgânicos." class="rounded-lg shadow-md w-full max-w-xs h-auto object-cover">
+                    </div>
+                </div>
+
+                <hr class="my-10 border-gray-200">
+
+                <!-- Seção de Vermicompostagem -->
+                <div class="mt-8">
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-4">Uma Alternativa Poderosa: Vermicompostagem</h3>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        A vermicompostagem, ou compostagem com minhocas (geralmente as da espécie Californiana Vermelha), é um método fantástico que transforma resíduos em húmus de minhoca, um dos adubos mais ricos que existem. O processo é mais rápido e também produz um biofertilizante líquido.
+                    </p>
+        
+                    <div class="grid md:grid-cols-3 gap-8 items-center">
+                        <!-- O que as minhocas gostam -->
+                        <div class="bg-green-50 border-2 border-green-200 p-6 rounded-lg">
+                            <h4 class="text-xl font-bold text-green-800 mb-4">✅ O que as minhocas ADORAM:</h4>
+                            <ul class="space-y-2 list-disc list-inside text-gray-700">
+                                <li>Borra de café e saquinhos de chá</li>
+                                <li>Cascas de frutas e legumes</li>
+                                <li>Cascas de ovos bem trituradas</li>
+                                <li>Papelão e papel rasgado</li>
+                                <li>Folhas secas</li>
+                            </ul>
+                        </div>
+                        <!-- O que evitar -->
+                        <div class="bg-red-50 border-2 border-red-200 p-6 rounded-lg">
+                            <h4 class="text-xl font-bold text-red-800 mb-4">❌ O que EVITAR no minhocário:</h4>
+                            <ul class="space-y-2 list-disc list-inside text-gray-700">
+                                <li>Todos os itens da lista "Não Pode" acima</li>
+                                <li>Frutas cítricas em grande quantidade</li>
+                                <li>Cebola, alho e pimenta</li>
+                                <li>Alimentos muito gordurosos ou salgados</li>
+                            </ul>
+                        </div>
+                        <!-- Imagem -->
+                        <div class="flex items-center justify-center mt-4 md:mt-0">
+                            <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDIwMCAyMDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHJlY3QgeD0iMjUiIHk9IjI1IiB3aWR0aD0iMTUwIiBoZWlnaHQ9IjE1MCIgcng9IjE1IiBmaWxsPSIjMzc0MTUxIi8+PHJlY3QgeD0iMjUiIHk9IjI1IiB3aWR0aD0iMTUwIiBoZWlnaHQ9IjUwIiByeD0iMTUgMTUgMCAwIiBmaWxsPSIjYzg3NTAwIi8+PHJlY3QgeD0iMjUiIHk9Ijc1IiB3aWR0aD0iMTUwIiBoZWlnaHQ9IjUwIiBmaWxsPSIjN2FjMzQxIi8+PHJlY3QgeD0iMjUiIHk9IjEyNSIgd2lkdGg9IjE1MCIgaGVpZ2h0PSI1MCIgcng9IjAgMCAxNSAxNSIgZmlsbD0iIzU3M2YyYyIvPjxwYXRoIGQ9Ik0zNSAxNTAgVjE2MCBIMTU1IFYxNTAgQzE1MCAxNTUgMTQ1IDE2MCAxMjAgMTYwIEg4MCBDNTUgMTYwIDQwIDE1NSAzNSAxNTBaIiBmaWxsPSIjNGI1NTY5Ii8+PHBhdGggZD0iTTUwIDQ1IEM1NSAzNSA3MCAzNSA3MCA0NSBDNzAgNTUgNjAgNjUgNTAgNjVaIiBmaWxsPSIjZmY5ODAwIi8+PHBhdGggZD0iTTEzMCA0MCBMMTM1IDUwIEwxNDUgNDVMMTMwIDQwWiIgZmlsbD0iI2QxYzRjYyIvPjxwYXRoIGQ9Ik05MCA5MCBDOTAgODAgMTEwIDgwIDExMCA5MCBDMTEwIDEwMCA5NSAxMDAgOTUgMTEwQzk1IDEyMCA4NSAxMjAgODUgMTEwQzg1IDEwMCA5MCAxMDAgOTAgOTBaIiBmaWxsPSIjZTU3Mjc1Ii8+PHBhdGggZD0iTTcwIDg1IEM4MCA4MCA4MCA5NSA3MCA5NVM2MCA4MCA3MCA4NVoiIGZpbGw9IiNlNTcyNzUiLz48cGF0aCBkPSJNNjAgMTM1IEM2NSAxMzAgODAgMTMwIDgwIDEzNSBDODAgMTQwIDcwIDE0NSA2MCAxNDVaIiBmaWxsPSIjZmFmYWZhIi8+PHJlY3QgeD0iMTI1IiB5PSIxNjAiIHdpZHRoPSIxMCIgaGVpZ2h0PSIxNSIgcng9IjMiIGZpbGw9IiM0YjU1NjkiLz48cmVjdCB4PSIxMjAiIHk9IjE3NCIgd2lkdGg9IjIwIiBoZWlnaHQ9IjUiIHJ4PSIyIiBmaWxsPSIjNGI1NTY5Ii8+PC9zdmc+" alt="Ilustração de um minhocário com minhocas trabalhando para criar húmus." class="rounded-lg shadow-md w-full max-w-xs h-auto object-cover">
+                        </div>
+                    </div>
+                </div>
+
+                 <div class="mt-10 text-center bg-gray-100 p-6 rounded-lg">
+                     <p class="text-gray-700">
+                        Procure os pontos de coleta de orgânicos na Moradia. Separe seus resíduos corretamente e contribua para o ciclo da vida em nossa horta!
+                     </p>
+                 </div>
+            </div>
+        </section>
+
+        <!-- Página: Plano Estratégico -->
+        <section id="plano-estrategico" class="page">
+            <div class="bg-white p-6 md:p-8 rounded-lg shadow-xl">
+                <h2 class="text-3xl font-bold text-green-700 mb-6 border-b-2 border-green-200 pb-2">Plano Estratégico do Projeto</h2>
+
+                <div class="space-y-10">
+                    <!-- Apresentação -->
+                    <div>
+                        <h3 class="text-2xl font-semibold text-gray-800 mb-3">1. Apresentação</h3>
+                        <p class="text-gray-600 leading-relaxed">
+                            Este projeto de extensão propõe a reativação e consolidação da horta comunitária na Moradia Estudantil da Universidade Federal de Santa Catarina (UFSC). A iniciativa fundamenta-se na compreensão da extensão universitária como um processo educativo, cultural e científico que, de forma indissociável do ensino e da pesquisa, articula a Universidade e a sociedade em uma troca de saberes. Alinhado ao programa "Biologia e Sociedade: Atividades de Extensão em Ciências Biológicas", o projeto visa aplicar conhecimentos das ciências biológicas para fomentar o desenvolvimento social equitativo e sustentável, respondendo a uma demanda real e coerente com o contexto da comunidade estudantil residente.
+                        </p>
+                    </div>
+
+                    <!-- Justificativa -->
+                    <div>
+                        <h3 class="text-2xl font-semibold text-gray-800 mb-3">2. Justificativa</h3>
+                        <p class="text-gray-600 leading-relaxed mb-4">
+                           A Moradia Estudantil da UFSC (CEU) acolhe estudantes de diversas realidades socioeconômicas e culturais do Brasil, muitos em situação de vulnerabilidade social. A reativação da horta é uma ação de extensão estratégica que:
+                        </p>
+                        <ul class="space-y-2 list-disc list-inside text-gray-600">
+                            <li>Aplica conceitos biológicos de agroecologia, compostagem e ciclagem de nutrientes para solucionar questões práticas.</li>
+                            <li>Promove o desenvolvimento social equitativo, ao criar um espaço inclusivo e colaborativo.</li>
+                            <li>Fomenta a sustentabilidade, alinhando-se à Política Nacional de Resíduos Sólidos.</li>
+                            <li>Dialoga com a realidade local, partindo de uma demanda da própria comunidade e adaptando-se às suas necessidades.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Objetivos -->
+                    <div>
+                        <h3 class="text-2xl font-semibold text-gray-800 mb-3">3. Objetivos</h3>
+                        <div class="bg-gray-50 p-4 rounded-lg border border-gray-200 mb-4">
+                            <h4 class="text-lg font-bold text-gray-700 mb-2">3.1 Objetivo Geral</h4>
+                            <p class="text-gray-600">Planejar e executar, de forma participativa e contínua, uma horta comunitária agroecológica na Moradia Estudantil da UFSC, consolidando-a como um espaço de aprendizado, convivência e promoção da sustentabilidade.</p>
+                        </div>
+                        <div>
+                             <h4 class="text-lg font-bold text-gray-700 mb-2">3.2 Objetivos Específicos</h4>
+                             <ul class="space-y-2 list-disc list-inside text-gray-600">
+                                <li>Articular saberes acadêmicos e populares no planejamento e manejo de um sistema agroecológico.</li>
+                                <li>Implementar e gerir um sistema de compostagem para o tratamento dos resíduos orgânicos.</li>
+                                <li>Promover a segurança e soberania alimentar entre os moradores.</li>
+                                <li>Fomentar a integração social e o desenvolvimento de práticas de gestão comunitária.</li>
+                                <li>Desenvolver materiais didáticos e realizar oficinas de capacitação sobre temas de biologia aplicada.</li>
+                             </ul>
+                        </div>
+                    </div>
+
+                    <!-- Metodologia -->
+                    <div>
+                        <h3 class="text-2xl font-semibold text-gray-800 mb-3">4. Metodologia: Plano de Ação</h3>
+                        <p class="text-gray-600 leading-relaxed mb-6">
+                            A execução do projeto será pautada em uma metodologia participativa, assegurando que os moradores sejam protagonistas em todas as fases.
+                        </p>
+                        <div class="space-y-6">
+                            <div class="bg-green-50 border border-green-200 p-6 rounded-lg">
+                                <h4 class="text-xl font-bold text-green-800 mb-2">Fase 1: Diagnóstico e Planejamento Participativo</h4>
+                                <ul class="space-y-2 list-disc list-inside text-gray-700">
+                                    <li><strong>Mobilização:</strong> Realização de assembleias para apresentar a proposta e formar um comitê gestor.</li>
+                                    <li><strong>Diagnóstico Rápido:</strong> Aplicação de questionários e rodas de conversa para entender os interesses dos moradores.</li>
+                                    <li><strong>Planejamento Coletivo:</strong> Definição do desenho dos canteiros, espécies e plano de trabalho.</li>
+                                </ul>
+                            </div>
+                            <div class="bg-blue-50 border border-blue-200 p-6 rounded-lg">
+                                <h4 class="text-xl font-bold text-blue-800 mb-2">Fase 2: Execução e Capacitação (Ações Contínuas)</h4>
+                                 <ul class="space-y-2 list-disc list-inside text-gray-700">
+                                    <li><strong>Oficinas Teórico-Práticas:</strong> Abordagem de temas como compostagem, agroecologia e PANCs.</li>
+                                    <li><strong>Mutirões de Implantação:</strong> Organização de mutirões para preparação do solo, plantio e manutenções.</li>
+                                    <li><strong>Gestão de Resíduos Orgânicos:</strong> Reativação do sistema de compostagem com pontos de coleta sinalizados.</li>
+                                </ul>
+                            </div>
+                            <div class="bg-yellow-50 border border-yellow-200 p-6 rounded-lg">
+                                 <h4 class="text-xl font-bold text-yellow-800 mb-2">Fase 3: Avaliação e Sistematização</h4>
+                                 <ul class="space-y-2 list-disc list-inside text-gray-700">
+                                    <li><strong>Avaliação Contínua:</strong> Reuniões periódicas do comitê gestor para coletar feedback.</li>
+                                    <li><strong>Sistematização:</strong> Produção de relatórios e materiais de divulgação para compartilhar os resultados.</li>
+                                 </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                     <!-- Resultados Esperados -->
+                    <div>
+                        <h3 class="text-2xl font-semibold text-gray-800 mb-3">5. Resultados Esperados</h3>
+                        <ul class="space-y-2 list-disc list-inside text-gray-600">
+                            <li>Horta comunitária agroecológica implementada e em produção contínua.</li>
+                            <li>Sistema de compostagem ativo, desviando resíduos orgânicos do aterro sanitário.</li>
+                            <li>Moradores engajados e capacitados em práticas de agricultura urbana.</li>
+                            <li>Melhora na integração e no sentimento de pertencimento na Moradia Estudantil.</li>
+                            <li>Produção e divulgação de conhecimento, fortalecendo a relação entre Biologia e Sociedade.</li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+
+    </main>
+
+    <footer class="bg-white mt-12 border-t">
+        <div class="container mx-auto px-6 py-4 text-center text-gray-500">
+            <p>&copy; 2025 Projeto de Extensão Horta Comunitária UFSC. Desenvolvido com a comunidade.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const navLinks = document.querySelectorAll('.nav-link');
+            const navLinkBtns = document.querySelectorAll('.nav-link-btn');
+            const pages = document.querySelectorAll('.page');
+            const menuBtn = document.getElementById('menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileNavLinks = mobileMenu.querySelectorAll('.nav-link');
+
+            function showPage(pageId) {
+                pages.forEach(page => page.classList.remove('active'));
+                const targetPage = document.getElementById(pageId);
+                if (targetPage) targetPage.classList.add('active');
+
+                navLinks.forEach(link => link.classList.remove('active'));
+                document.querySelectorAll(`.nav-link[href="#${pageId}"]`).forEach(activeLink => {
+                    activeLink.classList.add('active');
+                });
+                
+                mobileMenu.classList.add('hidden');
+            }
+            
+            const allLinks = [...navLinks, ...navLinkBtns, ...mobileNavLinks];
+
+            allLinks.forEach(link => {
+                link.addEventListener('click', function(event) {
+                    event.preventDefault();
+                    const pageId = this.getAttribute('href').substring(1);
+                    showPage(pageId);
+                    if (window.innerWidth < 768) { 
+                         setTimeout(() => {
+                            const headerHeight = document.querySelector('header').offsetHeight;
+                            const targetElement = document.getElementById(pageId);
+                            if(targetElement) {
+                                const elementPosition = targetElement.getBoundingClientRect().top;
+                                const offsetPosition = elementPosition + window.pageYOffset - headerHeight;
+                                window.scrollTo({
+                                    top: offsetPosition,
+                                    behavior: "smooth"
+                                });
+                            }
+                        }, 100);
+                    } else {
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                    }
+                });
+            });
+
+            menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+            
+            showPage('inicio');
+        });
+    </script>
+</body>
+</html>

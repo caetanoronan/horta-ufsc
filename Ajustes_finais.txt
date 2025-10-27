@@ -1,0 +1,118 @@
+O que traduzimos e ajustamos agora
+Justificativa
+
+Título, parágrafo introdutório e 4 bullets traduzidos e ligados ao selector PT/ES.
+Texto com dark:text para leitura confortável no modo escuro.
+Objetivos
+
+Título da seção e duas subseções:
+3.1 Objetivo Geral: título e parágrafo traduzidos.
+3.2 Objetivos Específicos: 5 bullets traduzidos.
+Cartão cinza com dark:bg-gray-800 e dark:border-gray-700; textos claros em dark.
+Metodologia: Plano de Ação
+
+Título e parágrafo introdutório traduzidos.
+Fases 1, 2 e 3:
+Títulos e bullets traduzidos com data-i18n-html para manter negritos.
+Cartões coloridos com dark:bg-…-900 e dark:border-…-700; título e lista com contraste ajustado.
+Resultados Esperados
+
+Título e 5 bullets traduzidos, com dark:text.
+Publicação
+
+Commits feitos e enviados; a página do GitHub Pages atualiza em ~1–2 minutos.
+Estado atual
+Todo o conteúdo principal está traduzível PT/ES através do seletor.
+Modo escuro: cartões, listas, tabela e blocos informativos com contraste consistente e legível.
+
+Cambios realizados
+Créditos
+
+Títulos traducibles:
+“Autores” → data-i18n="credits_authors_title"
+“Disciplina e Orientação” → data-i18n="credits_course_title"
+“Referências” → data-i18n="credits_refs_title"
+Párrafo de la asignatura y nota de profesoras ahora con data-i18n-html="true" (key credits_course_text) para mantener el salto de línea.
+Texto del enlace “Abrir PDF da disciplina” con data-i18n="credits_course_link".
+Pie de página
+
+Texto del footer ahora con data-i18n-html="true" (key footer_text) para mostrar “© 2025 …” en PT/ES.
+Traducciones añadidas en JS
+
+PT y ES para: credits_authors_title, credits_course_title, credits_course_text, credits_course_link, credits_refs_title, footer_text.
+Publicación
+
+Commit y push a main: “feat(i18n): traduzir seção Créditos e rodapé (PT/ES); adicionar chaves e data-i18n”.
+Estado y verificación
+La selección de idioma persiste (localStorage) y ahora aplica también a Créditos y al pie.
+Modo oscuro: los colores de estos títulos y textos ya respetan las clases existentes; no se alteró contraste.
+En vivo
+Sitio: https://caetanoronan.github.io/horta-ufsc
+Los cambios pueden tardar unos segundos en reflejarse.
+Pendientes opcionales
+¿Quieres que también traduzca la última línea de la lista de referencias (“Assistência de desenvolvimento por GitHub Copilot (IA)”) a ES? Puedo hacerlo rápido.
+Resumen de tareas
+Translate Créditos section: COMPLETADO
+Translate footer text: COMPLETADO
+Verify persistence and styling: COMPLETADO
+Commit and publish updates: COMPLETADO
+
+¡Resuelto! 🎉
+El problema era que el archivo PDF de la disciplina BIO7247_Introdução à Extensão Universitária_2025_2.docx.pdf no estaba incluido en el repositorio Git, por lo que GitHub Pages no podía servir el enlace.
+
+Lo que hice:
+Identifiqué el problema: El PDF existía localmente pero no estaba trackeado en Git
+Añadí el archivo: git add "BIO7247_Introdução à Extensão Universitária_2025_2.docx.pdf"
+Commit: "docs: adicionar PDF da disciplina BIO7247 para referência nos créditos"
+Push a GitHub: El archivo ahora está publicado (177.66 KiB)
+✅ Ahora funciona:
+Enlace 1: Horta Comunitária UFSC: Guia Prático (PDF) ✓
+Enlace 2: BIO7247 - Introdução à Extensão Universitária (PDF) ✓ (recién corregido)
+Espera unos segundos para que GitHub Pages actualice y el enlace debería funcionar perfectamente en:
+https://caetanoronan.github.io/horta-ufsc/#creditos
+
+¡Listo! 🎵
+He añadido un reproductor de música de fondo con las siguientes características:
+
+✨ Funcionalidades:
+Botón flotante en la esquina inferior derecha (verde, combinando con el tema de la huerta)
+Control play/pause con iconos animados:
+🎵 cuando está pausado
+⏸️ cuando está reproduciendo
+Reproducción en loop - la música se repite automáticamente
+Volumen ajustado al 30% para no ser invasivo
+Totalmente opcional - el usuario decide si quiere activar la música
+🎼 Características técnicas:
+El archivo Transformação_.mp3 está ahora en el repositorio (2.87 MB)
+El botón se mantiene fijo incluso al hacer scroll
+Compatible con todos los navegadores modernos
+El audio no se inicia automáticamente (respetando las políticas de UX)
+🌐 En vivo:
+Los cambios estarán disponibles en unos segundos en:
+https://caetanoronan.github.io/horta-ufsc
+
+¡El visitante ahora puede disfrutar de música ambiental mientras explora el proyecto de la huerta! 🌱🎶
+
+¡Me alegro mucho de que estés feliz con el proyecto! 🎉🌱
+
+Sobre tu pregunta del repositorio local:
+
+✅ Todo está online y seguro
+Tu proyecto ya está completamente guardado en GitHub, por lo que:
+
+Puedes eliminar la carpeta del Desktop si quieres liberar espacio
+Todos los archivos están en: https://github.com/caetanoronan/horta-ufsc
+El sitio web está publicado en: https://caetanoronan.github.io/horta-ufsc
+🔄 ¿Qué pasa si necesitas editar algo en el futuro?
+Si más adelante quieres hacer cambios, simplemente:
+
+💡 Mi recomendación:
+Si tienes espacio: deja la carpeta como backup local
+Si necesitas espacio: puedes borrarla sin problema - todo está seguro en GitHub
+Antes de borrar: verifica que todo esté en https://github.com/caetanoronan/horta-ufsc
+📦 Lo que está guardado en GitHub:
+✅ Todo el código HTML/CSS/JavaScript
+✅ Los PDFs de referencia
+✅ El archivo de música MP3
+✅ Todo el historial de cambios (commits)
+¿Quieres que te ayude a verificar algo específico antes de decidir qué hacer con la carpeta local?
