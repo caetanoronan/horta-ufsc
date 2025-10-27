@@ -717,6 +717,8 @@
             const root = document.documentElement;
             const langSelects = document.querySelectorAll('.lang-select');
             let currentLang = 'pt';
+            // Declare early to avoid TDZ when setLanguage runs before materials section is defined
+            let materialsData = [];
 
             // Theme utilities
             function setTheme(theme) {
@@ -1289,7 +1291,7 @@
                     activeLink.classList.add('active');
                 });
                 
-                mobileMenu.classList.add('hidden');
+                if (mobileMenu) mobileMenu.classList.add('hidden');
             }
             
             const allLinks = [...navLinks, ...navLinkBtns, ...mobileNavLinks];
@@ -1323,7 +1325,6 @@
             }
             
             // Materials section - CSV loader and renderer
-            let materialsData = [];
             let allCategories = new Set();
             
             async function loadMaterials() {
@@ -1541,7 +1542,7 @@
                         filteredData = materialsData.filter(row => row.Categoria === selectedCategory);
                     }
                     
-                    renderMaterialsTable(filteredData);
+                    renderMaterialsTable(filteredData, currentLang);
                 });
             }
             
