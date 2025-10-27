@@ -716,6 +716,7 @@
             const themeToggles = document.querySelectorAll('.theme-toggle');
             const root = document.documentElement;
             const langSelects = document.querySelectorAll('.lang-select');
+            let currentLang = 'pt';
 
             // Theme utilities
             function setTheme(theme) {
@@ -1235,7 +1236,16 @@
             function setLanguage(lang) {
                 localStorage.setItem('lang', lang);
                 langSelects.forEach(sel => { if (sel) sel.value = lang; });
+                currentLang = lang;
                 applyI18n(lang);
+                // Update Materials section labels if data loaded
+                if (materialsData && materialsData.length) {
+                    buildCategoryFilter(currentLang);
+                    // keep current selection if exists
+                    const selectedCategory = (document.getElementById('category-filter')?.value) || 'all';
+                    const dataToRender = selectedCategory === 'all' ? materialsData : materialsData.filter(r => r.Categoria === selectedCategory);
+                    renderMaterialsTable(dataToRender, currentLang);
+                }
             }
 
             const storedLangPref = localStorage.getItem('lang') || 'pt';
@@ -1329,18 +1339,12 @@
                         if (row.Categoria) allCategories.add(row.Categoria);
                     });
                     
-                    // Populate category filter
-                    const categoryFilter = document.getElementById('category-filter');
-                    allCategories.forEach(cat => {
-                        const option = document.createElement('option');
-                        option.value = cat;
-                        option.textContent = cat;
-                        categoryFilter.appendChild(option);
-                    });
+                    // Populate category filter with i18n labels
+                    buildCategoryFilter(currentLang);
                     
                     loadingEl.classList.add('hidden');
                     tableContainer.classList.remove('hidden');
-                    renderMaterialsTable(materialsData);
+                    renderMaterialsTable(materialsData, currentLang);
                     
                 } catch (error) {
                     console.error('Error loading materials:', error);
@@ -1387,7 +1391,7 @@
                 return data;
             }
             
-            function renderMaterialsTable(data) {
+            function renderMaterialsTable(data, lang = 'pt') {
                 const tbody = document.getElementById('materials-tbody');
                 const emptyEl = document.getElementById('materials-empty');
                 const tableContainer = document.getElementById('materials-table-container');
@@ -1404,17 +1408,122 @@
                 emptyEl.classList.add('hidden');
                 
                 data.forEach(row => {
+                    const tRow = translateMaterialsRow(row, lang);
                     const tr = document.createElement('tr');
                     tr.className = 'border-b border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700';
                     tr.innerHTML = `
-                        <td class="px-6 py-4 font-medium text-gray-900 dark:text-gray-100">${row.Categoria || ''}</td>
-                        <td class="px-6 py-4">${row.Item || ''}</td>
-                        <td class="px-6 py-4">${row['Especificação/Sugestão'] || row['Especificação'] || row.Especificacao || ''}</td>
-                        <td class="px-6 py-4">${row.Qtde || row.Quantidade || ''}</td>
-                        <td class="px-6 py-4">${row['Observações'] || row.Observacoes || ''}</td>
+                        <td class="px-6 py-4 font-medium text-gray-900 dark:text-gray-100">${tRow.categoria}</td>
+                        <td class="px-6 py-4">${tRow.item}</td>
+                        <td class="px-6 py-4">${tRow.spec}</td>
+                        <td class="px-6 py-4">${tRow.qty}</td>
+                        <td class="px-6 py-4">${tRow.notes}</td>
                     `;
                     tbody.appendChild(tr);
                 });
+            }
+
+            function buildCategoryFilter(lang = 'pt') {
+                const categoryFilter = document.getElementById('category-filter');
+                if (!categoryFilter) return;
+                const prevValue = categoryFilter.value || 'all';
+                // Reset options
+                categoryFilter.innerHTML = '';
+                const optAll = document.createElement('option');
+                optAll.value = 'all';
+                optAll.textContent = translations[lang]?.mat_filter_all || 'Todas';
+                categoryFilter.appendChild(optAll);
+                // Add categories preserving value (PT) and translating label
+                const cats = Array.from(allCategories).sort((a, b) => a.localeCompare(b));
+                cats.forEach(cat => {
+                    const option = document.createElement('option');
+                    option.value = cat; // keep original for matching
+                    option.textContent = translateCategory(cat, lang);
+                    categoryFilter.appendChild(option);
+                });
+                // Restore selection if exists
+                categoryFilter.value = prevValue;
+            }
+
+            function translateCategory(cat, lang) {
+                if (lang !== 'es') return cat;
+                const map = {
+                    'Ferramentas': 'Herramientas',
+                    'EPIs': 'EPP',
+                    'Canteiros': 'Canteros',
+                    'Irrigação': 'Riego',
+                    'Irrigação (opcional)': 'Riego (opcional)',
+                    'Compostagem': 'Compostaje',
+                    'Vermicompostagem': 'Vermicompostaje',
+                    'Vermicompostagem (opcional)': 'Vermicompostaje (opcional)',
+                    'Coleta': 'Recolección',
+                    'Sinalização': 'Señalización',
+                    'Substratos/insumos': 'Sustratos/insumos',
+                    'Sementes/mudas': 'Semillas/plantines',
+                    'Outros': 'Otros'
+                };
+                return map[cat] || cat;
+            }
+
+            function translateMaterialsRow(row, lang) {
+                const spec = row['Especificação/Sugestão'] || row['Especificação'] || row.Especificacao || '';
+                const qty = row.Qtde || row.Quantidade || '';
+                const notes = row['Observações'] || row.Observacoes || '';
+                if (lang !== 'es') {
+                    return { categoria: row.Categoria || '', item: row.Item || '', spec, qty, notes };
+                }
+                const itemMap = {
+                    'Enxada': 'Azada',
+                    'Pá': 'Pala',
+                    'Ancinho': 'Rastrillo',
+                    'Regador': 'Regadera',
+                    'Luvas': 'Guantes',
+                    'Madeira/tijolos': 'Madera/ladrillos',
+                    'Cobertura morta': 'Cobertura orgánica (mulch)',
+                    'Mangueira': 'Manguera',
+                    'Conectores': 'Conectores',
+                    'Chuveirinho/aspersor': 'Aspersor',
+                    'Kit gotejamento': 'Kit de goteo',
+                    "Caixas d'água": 'Cajas de agua',
+                    'Termômetro': 'Termómetro',
+                    'Composteira Doméstica': 'Compostera doméstica',
+                    'Caixas digestoras': 'Cajas digestoras',
+                    'Caixa coletora': 'Caja colectora',
+                    'Tampa': 'Tapa',
+                    'Torneira': 'Llave',
+                    'Minhocas Californianas': 'Lombrices Californianas',
+                    'Húmus inicial': 'Humus inicial',
+                    'Serragem': 'Aserrín',
+                    'Guia de orientações': 'Guía de orientaciones',
+                    'Baldes com tampa': 'Baldes con tapa',
+                    'Placas e estacas': 'Placas y estacas',
+                    'Esterco curtido': 'Estiércol curado',
+                    'Composto inicial': 'Compost inicial',
+                    'Folhosas diversas': 'Hortalizas de hoja',
+                    'Temperos diversos': 'Hierbas diversas',
+                    'Etiquetas resistentes': 'Etiquetas resistentes'
+                };
+                const categoria = translateCategory(row.Categoria || '', 'es');
+                const item = itemMap[row.Item || ''] || (row.Item || '');
+                // basic replacements inside spec/notes
+                const replacePairs = [
+                    ['Litros', 'Litros'], ['litros', 'litros'],
+                    ['Polipropileno', 'Polipropileno'],
+                    ['Preta', 'Negra'], ['preta', 'negra'],
+                    ['Mínimo', 'Mínimo'], ['mínimo', 'mínimo'],
+                    ['Torneira', 'Llave'],
+                    ['com tampa', 'con tapa'], ['sem tampa', 'sin tapa'],
+                    ['Diâmetro', 'Diámetro'], ['Altura', 'Altura'],
+                    ['Matéria-prima', 'Materia prima'],
+                    ['Tecnologia', 'Tecnología']
+                ];
+                const repl = (text) => replacePairs.reduce((acc, [pt, es]) => acc.replace(new RegExp(pt, 'g'), es), text || '');
+                return {
+                    categoria,
+                    item,
+                    spec: repl(spec),
+                    qty,
+                    notes: repl(notes)
+                };
             }
             
             // Category filter
