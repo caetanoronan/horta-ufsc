@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Horta Comunitária UFSC: Guia e Plano</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        // Tailwind via CDN configuration
+        tailwind.config = { darkMode: 'class' };
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
@@ -31,12 +35,22 @@
             color: #22c55e; /* green-500 */
             border-bottom: 2px solid #22c55e;
         }
+        /* Dark mode overrides to improve contrast when using CDN classes */
+        .dark body { background-color: #0f172a; color: #e5e7eb; }
+        .dark .bg-white { background-color: #1f2937 !important; }
+        .dark .bg-gray-50 { background-color: #0f172a !important; }
+        .dark .text-gray-800 { color: #e5e7eb !important; }
+        .dark .text-gray-700 { color: #e5e7eb !important; }
+        .dark .text-gray-600 { color: #d1d5db !important; }
+        .dark .text-gray-500 { color: #cbd5e1 !important; }
+        .dark .border-gray-200 { border-color: #374151 !important; }
+        .dark header { background-color: #111827 !important; }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-800">
+<body class="bg-gray-50 text-gray-800 dark:bg-gray-900 dark:text-gray-100">
 
     <!-- Cabeçalho e Navegação -->
-    <header class="bg-white shadow-md sticky top-0 z-50">
+    <header class="bg-white dark:bg-gray-800 dark:text-gray-100 shadow-md sticky top-0 z-50">
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
             <div class="flex items-center space-x-2">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-green-600" viewBox="0 0 20 20" fill="currentColor">
@@ -51,10 +65,20 @@
                 <a href="#guia-pratico" class="nav-link text-gray-600 hover:text-green-600 font-medium pb-1">Guia Prático</a>
                 <a href="#compostagem" class="nav-link text-gray-600 hover:text-green-600 font-medium pb-1">Compostagem</a>
                 <a href="#plano-estrategico" class="nav-link text-gray-600 hover:text-green-600 font-medium pb-1">Plano Estratégico</a>
+                <a href="#creditos" class="nav-link text-gray-600 hover:text-green-600 font-medium pb-1">Créditos</a>
+                <button class="theme-toggle hidden md:inline-flex items-center gap-2 border border-gray-200 rounded-lg px-3 py-1.5 text-sm text-gray-700 hover:bg-gray-50 dark:border-gray-600 dark:text-gray-200 dark:hover:bg-gray-700 transition" aria-label="Alternar tema">
+                    <span class="icon-sun">🌞</span>
+                    <span class="icon-moon hidden">🌙</span>
+                    <span class="sr-only">Alternar tema</span>
+                </button>
             </div>
             <!-- Menu Mobile -->
-             <div class="md:hidden">
-                <button id="menu-btn" class="text-gray-600 hover:text-green-600 focus:outline-none">
+             <div class="md:hidden flex items-center gap-3">
+                <button class="theme-toggle inline-flex items-center justify-center border border-gray-200 dark:border-gray-600 rounded-lg p-2 text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700 transition" aria-label="Alternar tema (mobile)">
+                    <span class="icon-sun">🌞</span>
+                    <span class="icon-moon hidden">🌙</span>
+                </button>
+                <button id="menu-btn" class="text-gray-600 hover:text-green-600 focus:outline-none" aria-label="Abrir menu">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
                 </button>
             </div>
@@ -67,6 +91,7 @@
             <a href="#guia-pratico" class="block nav-link text-gray-600 hover:text-green-600 font-medium">Guia Prático</a>
             <a href="#compostagem" class="block nav-link text-gray-600 hover:text-green-600 font-medium">Compostagem</a>
             <a href="#plano-estrategico" class="block nav-link text-gray-600 hover:text-green-600 font-medium">Plano Estratégico</a>
+            <a href="#creditos" class="block nav-link text-gray-600 hover:text-green-600 font-medium">Créditos</a>
         </div>
     </header>
 
@@ -456,11 +481,51 @@
             </div>
         </section>
 
+        <!-- Página: Créditos -->
+        <section id="creditos" class="page">
+            <div class="bg-white p-6 md:p-8 rounded-lg shadow-xl">
+                <h2 class="text-3xl font-bold text-green-700 mb-6 border-b-2 border-green-200 pb-2">Créditos, Autoria e Referências</h2>
+
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="space-y-6">
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-800 mb-2">Autores</h3>
+                            <ul class="list-disc list-inside text-gray-600">
+                                <li>Ronan Armando Caetano</li>
+                                <li>José Carlos Martini Filho</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-800 mb-2">Disciplina e Orientação</h3>
+                            <p class="text-gray-600">
+                                BIO7247 - Introdução à Extensão Universitária (2025/2).<br>
+                                Professoras: ver documento da disciplina no repositório.
+                            </p>
+                            <a class="text-green-700 underline" href="BIO7247_Introdução à Extensão Universitária_2025_2.docx.pdf" target="_blank" rel="noopener">Abrir PDF da disciplina</a>
+                        </div>
+                    </div>
+                    <div class="space-y-6">
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-800 mb-2">Referências</h3>
+                            <ul class="list-disc list-inside text-gray-600 space-y-2">
+                                <li><a class="text-green-700 underline" href="Horta Comunitária UFSC_ Guia Prático.pdf" target="_blank" rel="noopener">Horta Comunitária UFSC: Guia Prático (PDF)</a></li>
+                                <li><a class="text-green-700 underline" href="BIO7247_Introdução à Extensão Universitária_2025_2.docx.pdf" target="_blank" rel="noopener">BIO7247 - Introdução à Extensão Universitária (PDF)</a></li>
+                                <li><a class="text-green-700 underline" href="https://tailwindcss.com/docs" target="_blank" rel="noopener">Tailwind CSS - Documentação</a></li>
+                                <li><a class="text-green-700 underline" href="https://fonts.google.com/specimen/Inter" target="_blank" rel="noopener">Google Fonts - Inter</a></li>
+                                <li><a class="text-green-700 underline" href="https://docs.github.com/pages" target="_blank" rel="noopener">GitHub Pages - Documentação</a></li>
+                                <li>Assistência de desenvolvimento por GitHub Copilot (IA)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
 
     </main>
 
-    <footer class="bg-white mt-12 border-t">
-        <div class="container mx-auto px-6 py-4 text-center text-gray-500">
+    <footer class="bg-white dark:bg-gray-800 mt-12 border-t border-gray-200 dark:border-gray-700">
+        <div class="container mx-auto px-6 py-4 text-center text-gray-500 dark:text-gray-400">
             <p>&copy; 2025 Projeto de Extensão Horta Comunitária UFSC. Desenvolvido com a comunidade.</p>
         </div>
     </footer>
@@ -473,6 +538,40 @@
             const menuBtn = document.getElementById('menu-btn');
             const mobileMenu = document.getElementById('mobile-menu');
             const mobileNavLinks = mobileMenu.querySelectorAll('.nav-link');
+            const themeToggles = document.querySelectorAll('.theme-toggle');
+            const root = document.documentElement;
+
+            // Theme utilities
+            function setTheme(theme) {
+                if (theme === 'dark') {
+                    root.classList.add('dark');
+                } else {
+                    root.classList.remove('dark');
+                }
+                localStorage.setItem('theme', theme);
+                updateThemeIcons();
+            }
+
+            function updateThemeIcons() {
+                const isDark = root.classList.contains('dark');
+                document.querySelectorAll('.theme-toggle .icon-sun').forEach(el => el.classList.toggle('hidden', isDark));
+                document.querySelectorAll('.theme-toggle .icon-moon').forEach(el => el.classList.toggle('hidden', !isDark));
+            }
+
+            // Initialize theme (localStorage > system preference)
+            const storedTheme = localStorage.getItem('theme');
+            if (storedTheme) {
+                setTheme(storedTheme);
+            } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                setTheme('dark');
+            } else {
+                setTheme('light');
+            }
+
+            themeToggles.forEach(btn => btn.addEventListener('click', () => {
+                const isDark = root.classList.contains('dark');
+                setTheme(isDark ? 'light' : 'dark');
+            }));
 
             function showPage(pageId) {
                 pages.forEach(page => page.classList.remove('active'));
